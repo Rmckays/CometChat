@@ -1,0 +1,40 @@
+* {
+   margin: 0;
+   padding: 0;
+}
+
+#canvas {
+   position: fixed;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   z-index: -1;
+}
+
+#backdrop {
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   height: 100vh;
+   width: 100vw;
+   background: url('./cometchat.png') center center/cover;
+}
+
+#login-form {
+   margin: 30rem auto;
+}
+
+#login-form > h2 {
+   font-size: 2.2rem;
+   padding-bottom: 1rem;
+}
+
+#login-btn {
+   margin-top: 1rem;
+   background: rgb(240, 156, 96);
+   font-weight: bold;
+   font-size: 1.3rem;
+   color: rgb(38, 38, 80);
+}
