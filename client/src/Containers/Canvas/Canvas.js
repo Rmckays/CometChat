@@ -1,3 +1,5 @@
+import React, { Component } from 'react';
+
 const canvas = document.getElementById('canvas');
 let height = window.innerHeight;
 let width = window.innerWidth;
