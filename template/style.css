@@ -22,9 +22,17 @@
    background: url('./cometchat.png') center center/cover;
 }
 
-#login-form {
-   margin: 30rem auto;
+.showcase {
+   height: 100vh;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
+
+/* #login-form {
+   margin: 10rem auto;
+} */
 
 #login-form > h2 {
    font-size: 2.2rem;

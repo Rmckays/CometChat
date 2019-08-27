@@ -16,7 +16,7 @@ const gradient = ctx.createRadialGradient(
    200,
    width / 2,
    height / 2,
-   2000
+   height*1.25
 );
 gradient.addColorStop(0, 'rgba(254, 245, 187, 0.5)');
 gradient.addColorStop(0.13, 'rgba(252, 215, 140, 0.5)');
@@ -35,7 +35,7 @@ setInterval(() => {
    for (let i = 0; i < numComets; i++) {
       comets[i].updateComet(ctx);
    }
-}, 5);
+}, 10);
 
 setInterval(() => {
    ctx.fillStyle = gradient;

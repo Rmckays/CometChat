@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-      <link rel="stylesheet" href="style.css" />
-      <link
-         rel="stylesheet"
-         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      />
-      <title>CometChat</title>
-   </head>
-   <body>
-      <canvas id="canvas"></canvas>
-      <div id="backdrop"></div>
+import React from 'react';
+
+const loginForm = () => {
+   return(
       <div class="showcase">
          <form id="login-form" class="col-md-2 col-sm-4">
             <h2 class="text-white text-center">Welcome to CometChat</h2>
@@ -27,12 +15,10 @@
             </div>
             <div class="form-group">
                <button id="login-btn" type="button" class="btn form-control">
-                  Login
+               Login
                </button>
             </div>
          </form>
       </div>
-      <script src="Comet.js"></script>
-      <script src="Canvas.js"></script>
-   </body>
-</html>
+   )
+}
