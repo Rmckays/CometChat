@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
 
-class Comet extends Component{
+
+class Comet {
    constructor(color) {
-      this.x = Math.random() * width - Math.random() * 2000;
-      this.y = 0 - Math.random() * 2000;
+      this.x = Math.random() * width - Math.random() * 1000;
+      this.y = 0 - Math.random() * 1000;
       this.radius = 4;
       this.dy = 0.75;
       this.dx = 2;
