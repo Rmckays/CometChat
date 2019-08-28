@@ -1,32 +1,39 @@
 import React, { Component } from 'react';
+import style from './Canvas.module.css';
 
 class Canvas extends Component {
    constructor(props) {
       super(props);
       this.canvasRef = React.createRef();
-      this.height = this.props.height;
-      this.width = this.props.width;
+      this.state = {
+         height: window.innerHeight,
+         width: window.innerWidth,
+      };
    }
 
    componentDidMount() {
       const canvas = this.canvasRef.current;
+      canvas.width = this.state.width;
+      canvas.height = this.state.height;
       const context = canvas.getContext('2d');
       const gradient = context.createRadialGradient(
-         50,
-         100,
-         100,
-         100,
+         this.state.width / 2,
+         this.state.height - 300,
          200,
-         200
+         this.state.width / 2,
+         this.state.height / 2,
+         this.state.height * 1.25
       );
-      gradient.addColorStop(0, 'rgba(254, 245, 187, 0.5)');
-      gradient.addColorStop(0.13, 'rgba(252, 215, 140, 0.5)');
-      gradient.addColorStop(0.25, 'rgba(248, 165, 123, 0.5)');
-      gradient.addColorStop(0.39, 'rgba(184, 115, 187, 0.5)');
-      gradient.addColorStop(0.57, 'rgba(75, 73, 156, 0.5)');
-      gradient.addColorStop(0.7, 'rgba(38, 38, 80, 0.5)');
+      gradient.addColorStop(0, 'rgba(254, 245, 187, 0.75)');
+      gradient.addColorStop(0.13, 'rgba(252, 215, 140, 0.75)');
+      gradient.addColorStop(0.25, 'rgba(248, 165, 123, 0.75)');
+      gradient.addColorStop(0.39, 'rgba(184, 115, 187, 0.75)');
+      gradient.addColorStop(0.57, 'rgba(75, 73, 156, 0.75)');
+      gradient.addColorStop(0.7, 'rgba(38, 38, 80, 0.75)');
       context.fillStyle = gradient;
-      context.fillRect(0, 0, 300, 300);
+      context.fillRect(0, 0, this.state.width, this.state.height);
+      console.log('height:', this.state.height);
+      console.log('width:', this.state.width);
    }
 
    // drawGradient(ctx) {
@@ -67,8 +74,9 @@ class Canvas extends Component {
          <canvas
             ref={this.canvasRef}
             id='backdrop'
-            width={this.props.width}
-            height={this.props.height}></canvas>
+            className={style.canvas}
+            width={this.state.width}
+            height={this.state.height}></canvas>
       );
    }
 }
