@@ -5,7 +5,7 @@ const loginForm = () => {
    return (
       <div className={style.showcase}>
          <form id='login-form' className='col-md-2 col-sm-4'>
-            <h2 className='text-white text-center'>Welcome to CometChat</h2>
+            <h2 className='text-white text-center'>Welcome to Comet</h2>
             <div id='form-group'>
                <label htmlFor='username' className='text-left text-white'>
                   Username:

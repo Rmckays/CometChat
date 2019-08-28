@@ -3,7 +3,7 @@ import Backdrop from '../Components/Backdrop/Backdrop';
 import Login from '../Components/Login/Login';
 import Canvas from './Canvas/Canvas';
 
-class ChatPage extends Component {
+class ChannelsPage extends Component {
    constructor() {
       super();
       this.state = {
@@ -22,4 +22,4 @@ class ChatPage extends Component {
    }
 }
 
-export default ChatPage;
+export default ChannelsPage;

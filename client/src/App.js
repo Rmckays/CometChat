@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Backdrop from './Components/Backdrop/Backdrop';
-import Login from './Components/Login/Login';
-import Canvas from './Containers/Canvas/Canvas';
+import HomePage from './Containers/Homepage';
+import ChannelsPage from './Containers/ChannelsPage';
+import ChatPage from './Containers/ChatPage';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 
 class App extends Component {
@@ -15,11 +16,18 @@ class App extends Component {
 
    render() {
       return (
-         <div className='App'>
-            <Canvas width={this.state.width} height={this.state.height} />
-            <Backdrop />
-            <Login />
-         </div>
+         <BrowserRouter>
+            <div className='App'>
+               <Switch>
+                  <Route exact path='/' component={HomePage}></Route>
+                  <Route
+                     exact
+                     path='/channels'
+                     component={ChannelsPage}></Route>
+                  <Route exact path='/chat' component={ChatPage}></Route>
+               </Switch>
+            </div>
+         </BrowserRouter>
       );
    }
 }
