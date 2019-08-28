@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Backdrop from './Components/Backdrop/Backdrop';
-import Login from './Components/Login';
+import Login from './Components/Login/Login';
+import Canvas from './Containers/Canvas/Canvas';
 import './App.css';
 
-function App() {
-   return (
-      <div className='App'>
-         <Backdrop />
-         <Login />
-      </div>
-   );
+class App extends Component {
+   constructor() {
+      super();
+      this.state = {
+         height: window.height,
+         width: window.width,
+      };
+   }
+
+   render() {
+      return (
+         <div className='App'>
+            <Canvas width={this.state.width} height={this.state.height} />
+            <Backdrop />
+            <Login />
+         </div>
+      );
+   }
 }
 
 export default App;

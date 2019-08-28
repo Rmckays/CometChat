@@ -1,0 +1,15 @@
+.showcase {
+   height: 70vh;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+/* .loginBtn {
+   margin-top: 1rem;
+   background: rgb(240, 156, 96);
+   font-weight: bold;
+   font-size: 1.3rem;
+   color: rgb(38, 38, 80);
+} */

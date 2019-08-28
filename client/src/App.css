@@ -1,8 +1,7 @@
-@keyframes App-logo-spin {
-   from {
-      transform: rotate(0deg);
-   }
-   to {
-      transform: rotate(360deg);
-   }
+.loginBtn {
+   margin-top: 1rem;
+   background: rgb(240, 156, 96);
+   font-weight: bold;
+   font-size: 1.3rem;
+   color: rgb(38, 38, 80);
 }

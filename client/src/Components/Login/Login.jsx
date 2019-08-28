@@ -1,18 +1,19 @@
 import React from 'react';
+import style from './Login.module.css';
 
 const loginForm = () => {
    return (
-      <div className='showcase'>
-         <form id='login-form' class='col-md-2 col-sm-4'>
+      <div className={style.showcase}>
+         <form id='login-form' className='col-md-2 col-sm-4'>
             <h2 className='text-white text-center'>Welcome to CometChat</h2>
             <div id='form-group'>
-               <label for='username' className='text-left'>
+               <label htmlFor='username' className='text-left text-white'>
                   Username:
                </label>
                <input type='text' className='form-control' />
             </div>
-            <div class='form-group'>
-               <label for='password' className='text-left'>
+            <div className='form-group'>
+               <label htmlFor='password' className='text-left text-white'>
                   Password:
                </label>
                <input type='password' className='form-control' />
@@ -21,7 +22,7 @@ const loginForm = () => {
                <button
                   id='login-btn'
                   type='button'
-                  className='btn form-control'>
+                  className='btn form-control text-white loginBtn'>
                   Login
                </button>
             </div>
