@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 const canvas = document.getElementById('canvas');
+import React, { Component } from 'react';
+
 let height = window.innerHeight;
 let width = window.innerWidth;
 let comets = {};
@@ -43,3 +45,16 @@ setInterval(() => {
    ctx.fillStyle = gradient;
    ctx.fillRect(0, 0, width, height);
 }, 70);
+
+class Canvas extends Component {
+   drawCanvas() {
+      const canvas = this.refs.backdrop;
+      if(canvas){
+         const context = canvas.getContext('2d');
+         if()
+      }
+   }
+   render() {
+      return <canvas ref='backdrop' id='backdrop' width={this.props.width} height={this.props.height}></canvas>;
+   }
+}
