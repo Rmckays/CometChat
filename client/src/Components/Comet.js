@@ -1,3 +1,8 @@
+import image from '../comet.png';
+
+const cometImage = new Image();
+cometImage.src = image;
+
 export default class Comet {
    constructor(width) {
       this.x = Math.random() * width - Math.random() * 1000;
@@ -6,7 +11,7 @@ export default class Comet {
       this.dy = 0.75;
       this.dx = 2;
       this.color = 'rgb(254,245,187)';
-      this.image = '../Comet2.png';
+      this.image = cometImage;
    }
 
    drawComet(ctx) {
@@ -14,6 +19,7 @@ export default class Comet {
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
       ctx.fillStyle = this.color;
       ctx.fill();
+      ctx.drawImage(this.image, this.x, this.y, 50, 50);
    }
 
    updateComet(ctx, width) {
