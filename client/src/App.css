@@ -15,7 +15,15 @@
    color: white;
 }
 
+.brand {
+   font-size: 1.3rem;
+}
+
 .App {
    height: 100vh;
    width: 100vw;
+}
+
+.nav-list {
+   list-style: none;
 }
