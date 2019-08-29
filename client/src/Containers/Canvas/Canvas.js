@@ -54,7 +54,7 @@ class Canvas extends Component {
       gradient.addColorStop(0.25, 'rgba(248, 165, 123, 1)');
       gradient.addColorStop(0.39, 'rgba(184, 115, 187, 1)');
       gradient.addColorStop(0.57, 'rgba(75, 73, 156, 1)');
-      gradient.addColorStop(0.7, 'rgba(38, 38, 80, 1)');
+      gradient.addColorStop(0.8, 'rgba(38, 38, 80, 1)');
 
       return gradient;
    }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HomePage from './Containers/Homepage';
 import ChannelsPage from './Containers/ChannelsPage';
+import RegisterPage from './Containers/RegisterPage';
 import ChatPage from './Containers/ChatPage';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
@@ -22,8 +23,8 @@ class App extends Component {
                   <Route exact path='/' component={HomePage}></Route>
                   <Route
                      exact
-                     path='/channels'
-                     component={ChannelsPage}></Route>
+                     path='/register'
+                     component={RegisterPage}></Route>
                   <Route exact path='/chat' component={ChatPage}></Route>
                </Switch>
             </div>
