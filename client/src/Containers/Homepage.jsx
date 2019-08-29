@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Backdrop from '../Components/Backdrop/Backdrop';
 import Login from '../Components/Login/Login';
+import Footer from '../Components/Footer';
 import Canvas from './Canvas/Canvas';
 
 class HomePage extends Component {
@@ -18,6 +19,7 @@ class HomePage extends Component {
             <Canvas width={this.state.width} height={this.state.height} />
             <Backdrop />
             <Login />
+            <Footer />
          </div>
       );
    }
