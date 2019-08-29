@@ -25,20 +25,14 @@ class Canvas extends Component {
    componentDidMount() {
       const canvas = this.canvasRef.current;
       const ctx = canvas.getContext('2d');
-      // const imageMain = new Image();
-      // imageMain.src = image;
-      // imageMain.onload = () => {
-      //    ctx.drawImage(imageMain, 0, 0);
-      // };
-
       this.createComets();
+
       setInterval(() => this.drawCanvas(), 70);
       setInterval(() => {
          for (let i = 0; i < this.state.numComets; i++) {
             this.state.comets[i].updateComet(ctx, this.state.width);
          }
-         // ctx.drawImage(imageMain, 0, 0);
-      }, 20);
+      }, 15);
    }
 
    componentDidUpdate() {
