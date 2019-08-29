@@ -1,13 +1,12 @@
-
-
-class Comet {
-   constructor(color) {
+export default class Comet {
+   constructor(width) {
       this.x = Math.random() * width - Math.random() * 1000;
       this.y = 0 - Math.random() * 1000;
       this.radius = 4;
       this.dy = 0.75;
       this.dx = 2;
-      this.color = color;
+      this.color = 'rgb(254,245,187)';
+      this.image = '../Comet2.png';
    }
 
    drawComet(ctx) {
@@ -17,7 +16,7 @@ class Comet {
       ctx.fill();
    }
 
-   updateComet(ctx) {
+   updateComet(ctx, width) {
       if (this.y > window.innerHeight) {
          this.y = 0;
       }
@@ -32,5 +31,3 @@ class Comet {
       this.drawComet(ctx);
    }
 }
-
-export default Comet;

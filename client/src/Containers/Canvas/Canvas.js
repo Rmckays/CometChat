@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import style from './Canvas.module.css';
+import Comet from '../../Components/Comet';
 
 class Canvas extends Component {
    constructor(props) {
@@ -8,11 +9,29 @@ class Canvas extends Component {
       this.state = {
          height: window.innerHeight,
          width: window.innerWidth,
+         comets: [],
+         numComets: 5,
       };
    }
 
+   createComets() {
+      for (let i = 0; i < this.state.numComets; i++) {
+         let comet = new Comet(this.state.width);
+         this.state.comets[i] = comet;
+      }
+   }
+
    componentDidMount() {
-      this.drawCanvas();
+      const canvas = this.canvasRef.current;
+      const ctx = canvas.getContext('2d');
+      this.createComets();
+
+      setInterval(() => {
+         for (let i = 0; i < this.state.numComets; i++) {
+            this.state.comets[i].updateComet(ctx, this.state.width);
+         }
+      }, 5);
+      setInterval(() => this.drawCanvas(), 70);
    }
 
    componentDidUpdate() {
@@ -47,9 +66,8 @@ class Canvas extends Component {
       const context = canvas.getContext('2d');
       const gradient = this.drawGradient(context);
       context.fillStyle = gradient;
+      // context.fillStyle = 'rgba(0,0,0, 0)';
       context.fillRect(0, 0, this.state.width, this.state.height);
-      console.log('height:', this.state.height);
-      console.log('width:', this.state.width);
    }
 
    render() {
