@@ -24,8 +24,8 @@ export default class Comet {
       }
 
       if (this.x > window.innerWidth) {
-         this.x = Math.random() * width - Math.random() * 500;
-         this.y = 0 - Math.random() * 100;
+         this.x = Math.random() * width - Math.random() * 1000;
+         this.y = 0 - Math.random() * 500;
       }
 
       this.x += this.dx;
