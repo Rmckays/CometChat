@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import style from './Canvas.module.css';
+import image from '../../Comet2.png';
 import Comet from '../../Components/Comet';
 
 class Canvas extends Component {
@@ -24,14 +25,20 @@ class Canvas extends Component {
    componentDidMount() {
       const canvas = this.canvasRef.current;
       const ctx = canvas.getContext('2d');
-      this.createComets();
+      // const imageMain = new Image();
+      // imageMain.src = image;
+      // imageMain.onload = () => {
+      //    ctx.drawImage(imageMain, 0, 0);
+      // };
 
+      this.createComets();
+      setInterval(() => this.drawCanvas(), 70);
       setInterval(() => {
          for (let i = 0; i < this.state.numComets; i++) {
             this.state.comets[i].updateComet(ctx, this.state.width);
          }
-      }, 5);
-      setInterval(() => this.drawCanvas(), 70);
+         // ctx.drawImage(imageMain, 0, 0);
+      }, 20);
    }
 
    componentDidUpdate() {
