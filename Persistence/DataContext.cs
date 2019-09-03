@@ -2,7 +2,7 @@
 
 namespace Persistence
 {
-    public class Class1
-    {
-    }
+   public class DataContext
+   {
+   }
 }
