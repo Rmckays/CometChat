@@ -1,19 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <ItemGroup>
-    <!-- <PackageReference Include="Microsoft.AspNetCore.App" version="2.2.0"/> -->
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.4" PrivateAssets="All" />
-    <!-- <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.0" PrivateAssets="All" /> -->
-    <!-- <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.0" PrivateAssets="All" /> -->
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" PrivateAssets="All" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.4"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" PrivateAssets="All"/>
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Domain\Domain.csproj"/>
   </ItemGroup>
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
 </Project>
