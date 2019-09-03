@@ -10,7 +10,7 @@ namespace Domain
 
       public User User { get; set; }
 
-      public DataTime Date { get; set; }
+      // public DataTime Date { get; set; }
 
    }
 }
