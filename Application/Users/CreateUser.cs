@@ -19,6 +19,7 @@ namespace Application.Users
          public string Name { get; set; }
 
          public string Password { get; set; }
+         public DateTime CreatedOn { get; set; }
       }
 
       public class Handler : IRequestHandler<Command>
@@ -35,6 +36,7 @@ namespace Application.Users
             {
                Id = request.Id,
                Username = request.Username,
+               CreatedOn = request.CreatedOn,
                Email = request.Email,
                Name = request.Name,
                Password = request.Password
