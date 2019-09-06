@@ -1,7 +1,28 @@
+using System.Threading.Tasks;
+using Application.Messages;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Persistence;
+
 namespace API.Controllers
 {
-    public class MessagesController
-    {
-        
-    }
+   [Route("api/[controller]")]
+   [ApiController]
+   public class MessagesController : ControllerBase
+   {
+      private readonly IMediator _mediator;
+      private readonly ChatAppContext _context;
+      public MessagesController(IMediator mediator, ChatAppContext context)
+      {
+         _context = context;
+         _mediator = mediator;
+      }
+
+      [HttpPost]
+      public async Task<ActionResult<Unit>> Create(CreateMessage.Command command)
+      {
+         return await _mediator.Send(command);
+      }
+
+   }
 }

@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Application.Users;
 using Domain;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-
+using Persistence;
 
 namespace API.Controllers
 {
@@ -15,9 +16,12 @@ namespace API.Controllers
    public class UsersController : ControllerBase
    {
       private readonly IMediator _mediator;
-      public UsersController(IMediator mediator)
+      private readonly ChatAppContext _context;
+      public UsersController(IMediator mediator, ChatAppContext context)
       {
+
          _mediator = mediator;
+         _context = context;
       }
 
       [HttpGet]
@@ -26,10 +30,11 @@ namespace API.Controllers
          return await _mediator.Send(new List.Query());
       }
 
-      [HttpGet("{id}")]
-      public async Task<ActionResult<User>> GetUser(Guid id)
+      [HttpGet("{username}")]
+      public async Task<ActionResult<User>> GetUser(string username)
       {
-         return await _mediator.Send(new GetUser.Query { Id = id });
+         return _context.Users.Where(x => x.Username == username).FirstOrDefault();
+         // return await _mediator.Send(new GetUser.Query { Id = id });
       }
 
       [HttpPost]

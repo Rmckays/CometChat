@@ -1,6 +1,6 @@
 namespace Application.Messages
 {
-    public class Create
+    public class DeleteMessage
     {
         
     }

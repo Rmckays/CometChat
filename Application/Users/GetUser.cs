@@ -12,6 +12,7 @@ namespace Application.Users
       public class Query : IRequest<User>
       {
          public Guid Id { get; set; }
+         public string Username { get; set; }
       }
 
       public class Handler : IRequestHandler<Query, User>
@@ -24,7 +25,7 @@ namespace Application.Users
 
          public async Task<User> Handle(Query request, CancellationToken cancellationToken)
          {
-            var user = await _context.Users.FindAsync(request.Id);
+            var user = await _context.Users.FindAsync(request.Username);
 
             return user;
          }
