@@ -11,6 +11,7 @@ namespace Persistence
 
       }
 
+      public DbSet<Channel> Channels { get; set; }
       public DbSet<Message> Messages { get; set; }
       public DbSet<User> Users { get; set; }
    }
