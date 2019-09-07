@@ -25,12 +25,13 @@ class ChatPage extends Component {
                className='showcase'
                style={{
                   marginTop: '10rem',
+                  height: '75vh',
                }}>
-               <Grid>
+               <Grid style={{ height: '100%' }}>
                   <Grid.Column width={4}>
                      <ChannelWindow />
                   </Grid.Column>
-                  <Grid.Column width={10}>
+                  <Grid.Column stretch width={12}>
                      <ChatWindow />
                   </Grid.Column>
                </Grid>

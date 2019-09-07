@@ -44,3 +44,7 @@
    justify-content: center;
    z-index: 1;
 }
+
+input {
+   z-index: 2 !important;
+}
