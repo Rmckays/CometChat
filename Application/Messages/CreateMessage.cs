@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Domain;
@@ -16,7 +17,7 @@ namespace Application.Messages
 
          public string Text { get; set; }
 
-         public User User { get; set; }
+         public Guid UserId { get; set; }
 
          public DateTime CreatedAt { get; set; }
       }
@@ -32,11 +33,13 @@ namespace Application.Messages
 
          public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
          {
+            var user = _context.Users.FirstOrDefault(x => x.Id == request.UserId);
+
             var message = new Message
             {
                Id = request.Id,
                Text = request.Text,
-               User = request.User,
+               User = user,
                CreatedAt = request.CreatedAt
             };
 
