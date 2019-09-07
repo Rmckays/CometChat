@@ -8,8 +8,8 @@ const ChatWindow = () => {
             style={{
                color: 'white',
                backgroundColor: 'rgba(255,255,255, 0.7)',
-               height: '95%',
-               marginBottom: '0',
+               height: '92.5%',
+               marginBottom: '2.5%',
             }}>
             <Feed.Event
                style={{
