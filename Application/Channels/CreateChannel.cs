@@ -1,58 +1,50 @@
 using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Domain;
 using MediatR;
 using Persistence;
 
-namespace Application.Messages
+namespace Application.Channels
 {
-   public class CreateMessage
+   public class CreateChannel
    {
 
       public class Command : IRequest
       {
          public Guid Id { get; set; }
 
-         public string Text { get; set; }
-
-         public Guid UserId { get; set; }
-
-         public Guid ChannelId { get; set; }
+         public string Name { get; set; }
 
          public DateTime CreatedAt { get; set; }
       }
 
       public class Handler : IRequestHandler<Command>
       {
+         private readonly ChatAppContext _context;
          public Handler(ChatAppContext context)
          {
             _context = context;
          }
 
-         public readonly ChatAppContext _context;
-
          public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
          {
-            var user = _context.Users.FirstOrDefault(x => x.Id == request.UserId);
-            var channel = _context.Channels.FirstOrDefault(x => x.Id == request.ChannelId);
 
-            var message = new Message
+            var channel = new Channel
             {
                Id = request.Id,
-               Text = request.Text,
-               User = user,
-               Channel = channel,
+               Name = request.Name,
                CreatedAt = request.CreatedAt
             };
 
-            _context.Messages.Add(message);
+            _context.Channels.Add(channel);
+
+
             var success = await _context.SaveChangesAsync() > 0;
 
             if (success) return Unit.Value;
 
-            throw new Exception("Problem saving message");
+            throw new Exception("Problem saving changes");
          }
       }
    }

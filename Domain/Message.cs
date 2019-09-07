@@ -10,6 +10,8 @@ namespace Domain
 
       public User User { get; set; }
 
+      public Channel Channel { get; set; }
+
       public DateTime CreatedAt { get; set; }
 
    }
