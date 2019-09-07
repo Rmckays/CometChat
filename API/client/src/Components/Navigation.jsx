@@ -14,8 +14,8 @@ const Navigation = () => {
                      </NavLink>
                   </li>
                   <li className='px-3'>
-                     <NavLink className='text-white' to='/about'>
-                        About
+                     <NavLink className='text-white' to='/chat'>
+                        Chat
                      </NavLink>
                   </li>
                   <li className='px-3'>

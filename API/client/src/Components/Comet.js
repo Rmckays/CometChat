@@ -8,7 +8,7 @@ export default class Comet {
       this.x = Math.random() * width - Math.random() * 1000;
       this.y = 0 - Math.random() * 1500;
       this.radius = 4;
-      this.dy = 1;
+      this.dy = 1.25;
       this.dx = 2.5;
       this.color = 'rgb(254,245,187)';
       this.image = cometImage;
