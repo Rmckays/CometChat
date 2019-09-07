@@ -12,8 +12,8 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Text = table.Column<string>(nullable: true),
-                    UserId = table.Column<Guid>(nullable: true),
+                    Text = table.Column<string>(nullable: false),
+                    UserId = table.Column<Guid>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
