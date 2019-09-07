@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.Channels;
@@ -31,6 +32,21 @@ namespace API.Controllers
       public async Task<ActionResult<Unit>> Create(CreateChannel.Command command)
       {
          return await _mediator.Send(command);
+      }
+
+      [HttpPut("{id}")]
+      public async Task<ActionResult<Unit>> Edit(Guid id, EditChannel.Command command)
+      {
+         command.Id = id;
+         return await _mediator.Send(command);
+      }
+
+
+      [HttpDelete("{id}")]
+
+      public async Task<ActionResult<Unit>> Delete(Guid id)
+      {
+         return await _mediator.Send(new DeleteChannel.Command { Id = id });
       }
    }
 }
