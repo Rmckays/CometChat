@@ -13,8 +13,6 @@ namespace Application.Messages
       public Guid Id { get; set; }
 
       public string Text { get; set; }
-
-      public Guid ChannelId { get; set; }
     }
 
     public class Handler : IRequestHandler<Command>
@@ -32,7 +30,7 @@ namespace Application.Messages
 
         if (message == null)
         {
-            throw new Exception("Could not find User");
+          throw new Exception("Could not find message");
         }
 
         message.Text = request.Text ?? message.Text;
