@@ -34,7 +34,7 @@ namespace API.Controllers
       public async Task<ActionResult<User>> GetUser(string username)
       {
          return _context.Users.Where(x => x.Username == username).FirstOrDefault();
-         // return await _mediator.Send(new GetUser.Query { Id = id });
+         // return await _mediator.Send(new GetUser.Query { Username = username });
       }
 
       [HttpPost]
