@@ -33,6 +33,7 @@ namespace API.Controllers
       [HttpGet("{username}")]
       public async Task<ActionResult<User>> GetUser(string username)
       {
+         // pass in the user into the command.username to get around the DbSet primary key issue.
          return _context.Users.Where(x => x.Username == username).FirstOrDefault();
          // return await _mediator.Send(new GetUser.Query { Username = username });
       }
