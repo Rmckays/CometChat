@@ -27,12 +27,10 @@ namespace Application.Messages
 
          public async Task<List<Message>> Handle(Query request, CancellationToken cancellationToken)
          {
-            // var channels =  await _context.Channels.ToListAsync();
-            // var users = await _context.Users.ToListAsync();
+            var channels = await _context.Channels.ToListAsync();
+            var users = await _context.Users.ToListAsync();
 
-            // var messages = await _context.Messages.Where(c => c.Channel.Id == request.ChannelId).ToListAsync();
-            // var messages = await _context.Messages.Include(c => c.Channel.Id).Where(m => m.Channel_Id == request.ChannelId).ToListAsync();
-            var messages = await _context.Messages.ToListAsync();
+            var messages = await _context.Messages.Where(c => c.Channel.Id == request.ChannelId).ToListAsync();
 
             return messages;
          }
