@@ -19,9 +19,7 @@ namespace API.Controllers
       private readonly ChatAppContext _context;
       public UsersController(IMediator mediator, ChatAppContext context)
       {
-
          _mediator = mediator;
-         _context = context;
       }
 
       [HttpGet]
