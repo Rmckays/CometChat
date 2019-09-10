@@ -19,9 +19,7 @@ namespace API.Controllers
       private readonly ChatAppContext _context;
       public UsersController(IMediator mediator, ChatAppContext context)
       {
-
          _mediator = mediator;
-         _context = context;
       }
 
       [HttpGet]
@@ -33,9 +31,7 @@ namespace API.Controllers
       [HttpGet("{username}")]
       public async Task<ActionResult<User>> GetUser(string username)
       {
-         // pass in the user into the command.username to get around the DbSet primary key issue.
-         return _context.Users.Where(x => x.Username == username).FirstOrDefault();
-         // return await _mediator.Send(new GetUser.Query { Username = username });
+         return await _mediator.Send(new GetUser.Query { Username = username });
       }
 
       [HttpPost]
