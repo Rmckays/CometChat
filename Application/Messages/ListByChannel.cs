@@ -32,8 +32,8 @@ namespace Application.Messages
             // var channelIds = channels.Select(ch => ch.Id);
 
             // var messages = await _context.Messages.Where(x => x.Channel == request.ChannelId).ToListAsync();
-            // var messages = await _context.Messages.Where(c => c.Channel.Id == request.ChannelId).ToListAsync();
-            var messages = await _context.Messages.ToListAsync();
+            var messages = await _context.Messages.Where(c => c.Channel.Id == request.ChannelId).ToListAsync();
+            // var messages = await _context.Messages.ToListAsync();
 
             return messages;
          }
