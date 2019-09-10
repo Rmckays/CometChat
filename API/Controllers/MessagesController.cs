@@ -38,7 +38,7 @@ namespace API.Controllers
       [HttpGet]
       public async Task<ActionResult<List<Message>>> ListByChannel()
       {
-         return await _mediator.Send(new ListByChannel.Query());
+         return await _mediator.Send(new ListByChannel.Query() );
       }
 
       [HttpGet("{id}")]

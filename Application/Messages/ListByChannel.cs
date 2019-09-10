@@ -14,7 +14,7 @@ namespace Application.Messages
    {
       public class Query : IRequest<List<Message>>
       {
-         public string ChannelId { get; set; }
+         public Guid ChannelId { get; set; }
       }
 
       public class Handler : IRequestHandler<Query, List<Message>>
@@ -27,7 +27,12 @@ namespace Application.Messages
 
          public async Task<List<Message>> Handle(Query request, CancellationToken cancellationToken)
          {
+            var channels =  await _context.Channels.ToListAsync();
+            var users = await _context.Users.ToListAsync();
+            // var channelIds = channels.Select(ch => ch.Id);
+
             // var messages = await _context.Messages.Where(x => x.Channel == request.ChannelId).ToListAsync();
+            // var messages = await _context.Messages.Where(c => c.Channel.Id == request.ChannelId).ToListAsync();
             var messages = await _context.Messages.ToListAsync();
 
             return messages;
