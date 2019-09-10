@@ -35,17 +35,23 @@ namespace API.Controllers
          return await _mediator.Send(command);
       }
 
-      [HttpGet("{id}")]
+      [HttpGet("channels/{id}")]
       public async Task<ActionResult<List<Message>>> ListByChannel(Guid id)
       {
          return await _mediator.Send(new ListByChannel.Query() { ChannelId = id });
       }
 
-      // [HttpGet("{id}")]
-      // public async Task<ActionResult<Message>> GetMessage(Guid id)
-      // {
-      //    return await _mediator.Send(new Details.Query { Id = id });
-      // }
+      [HttpGet("users/{id}")]
+      public async Task<ActionResult<List<Message>>> ListByUser(Guid id)
+      {
+         return await _mediator.Send(new ListByUser.Query() { UserId = id });
+      }
+
+      [HttpGet("{id}")]
+      public async Task<ActionResult<Message>> GetMessage(Guid id)
+      {
+         return await _mediator.Send(new Details.Query { Id = id });
+      }
 
    }
 }
