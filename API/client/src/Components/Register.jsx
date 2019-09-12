@@ -1,42 +1,30 @@
 import React from 'react';
+import { Segment, Form, Button } from 'semantic-ui-react';
 
 const registerForm = () => {
    return (
-      <div className='register'>
-         <form id='login-form' className='col-md-2 col-sm-4'>
-            <h2 className='text-white text-center'>Create your Account</h2>
-            <div id='form-group'>
-               <label htmlFor='username' className='text-left text-white'>
-                  Choose Username:
-               </label>
-               <input type='text' className='form-control' />
-            </div>
-            <div id='form-group'>
-               <label htmlFor='email' className='text-left text-white'>
-                  Enter Email:
-               </label>
-               <input type='email' className='form-control' />
-            </div>
-            <div className='form-group'>
-               <label htmlFor='password' className='text-left text-white'>
-                  Choose Password:
-               </label>
-               <input type='password' className='form-control' />
-               <label htmlFor='password' className='text-left text-white'>
-                  Confirm Password:
-               </label>
-               <input type='password' className='form-control' />
-            </div>
-            <div className='form-group'>
-               <button
-                  id='login-btn'
-                  type='button'
-                  className='btn form-control text-white loginBtn'>
-                  Create
-               </button>
-            </div>
-         </form>
-      </div>
+      <Segment style={{margin: "15rem auto", background: "rgba(0,0,0,0)", width: "25%"}}>
+         <Form>
+            <Form.Input 
+               placeholder='Username' 
+               name="username" 
+               value=""/>
+            <Form.Input 
+               placeholder='Name' 
+               name="name" 
+               value="" />
+            <Form.Input 
+               type='email' 
+               placeholder='Email' 
+               name="email" 
+               value=""/>
+            <Form.Input 
+               placeholder='Password' 
+               name="password" 
+               value="" />
+            <Button name="title" type='submit' content='Create' style={{width: "100%", background: "rgb(240, 156, 96)"}}/>
+         </Form>
+      </Segment>
    );
 };
 

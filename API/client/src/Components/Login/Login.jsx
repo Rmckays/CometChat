@@ -1,39 +1,22 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import style from './Login.module.css';
+import { Segment, Form, Button } from 'semantic-ui-react';
 
 const loginForm = () => {
    return (
-      <div className={style.showcase}>
-         <form id='login-form' className='col-md-2 col-sm-4'>
-            <h2 className='text-white text-center'>Welcome to Comet</h2>
-            <div id='form-group'>
-               <label htmlFor='username' className='text-left text-white'>
-                  Username:
-               </label>
-               <input type='text' className='form-control' />
-            </div>
-            <div className='form-group'>
-               <label htmlFor='password' className='text-left text-white'>
-                  Password:
-               </label>
-               <input type='password' className='form-control' />
-            </div>
-            <div className='form-group'>
-               <button
-                  id='login-btn'
-                  type='button'
-                  className='btn form-control text-white loginBtn'>
-                  Login
-               </button>
-            </div>
-            <div className='form-group d-flex justify-content-center'>
-               <NavLink className='text-white' to='/register'>
-                  Register
-               </NavLink>
-            </div>
-         </form>
-      </div>
+      <Segment style={{margin: "15rem auto", background: "rgba(0,0,0,0)", width: "25%"}}>
+         <Form>
+            <Form.Input 
+               placeholder='Username' 
+               name="username" 
+               value=""/>
+            <Form.Input 
+               placeholder='Password' 
+               name="password" 
+               value="" />
+            <Button name="login" type='submit' content='Login' style={{width: "100%", background: "rgb(240, 156, 96)"}}/>
+         </Form>
+      </Segment>
    );
 };
 

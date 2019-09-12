@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Domain;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 namespace Application.Users
@@ -26,8 +27,8 @@ namespace Application.Users
 
          public async Task<User> Handle(Query request, CancellationToken cancellationToken)
          {
-            // var user = await _context.Users.Where(x => x.Username == request.username).FirstOrDefault();
-            var user = await _context.Users.FindAsync(request.Username);
+
+            var user =  await _context.Users.FirstOrDefaultAsync(c => c.Username == request.Username);
 
             return user;
          }
