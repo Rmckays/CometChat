@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Segment, Form, Button } from 'semantic-ui-react';
 import {v4 as uuid} from "uuid";
 import axios from 'axios';
@@ -11,11 +11,19 @@ const registerForm = () => {
    const [passwordState, setPasswordState] = useState('');
    const [userIdState, setUserIdState] = useState('');
 
-   const handleOnSubmit = () => {}
-
-   const handleOnInputChange = event => {
-      
+   const handleOnSubmit = () => {
+      axios.post('/api/user/', {
+         id: userIdState,
+         username: usernameState,
+         name: nameState,
+         email: emailState,
+         password: passwordState
+      })
+         .then(response => console.log(response))
+         .catch(error => console.log(error));
    }
+
+   useEffect(setUserIdState(uuid()), []);
 
    return (
       <Segment style={{margin: "15rem auto", background: "rgba(0,0,0,0)", width: "25%"}}>
@@ -41,7 +49,7 @@ const registerForm = () => {
                placeholder='Password' 
                name="password" 
                value={passwordState} />
-            <Button name="title" type='submit' content='Create' style={{width: "100%", background: "rgb(240, 156, 96)"}}/>
+            <Button name="title" type='submit' content='Create User' style={{width: "100%", background: "rgb(240, 156, 96)"}}/>
          </Form>
       </Segment>
    );
