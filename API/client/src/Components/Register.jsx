@@ -1,25 +1,47 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Segment, Form, Button } from 'semantic-ui-react';
 import {v4 as uuid} from "uuid";
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
-const registerForm = () => {
+const now = new Date();
+
+const RegisterForm = (props) => {
 
    const [usernameState, setUsernameState] = useState('');
    const [nameState, setNameState] = useState('');
    const [emailState, setEmailState] = useState('');
    const [passwordState, setPasswordState] = useState('');
-   const [userIdState, setUserIdState] = useState('');
+   const [userIdState, setUserIdState] = useState(uuid());
+   const [createdOnState, setCreatedOnState] = useState(now.toISOString());
+   const [createdUser, setCreatedUser] = useState(false);
 
-   const handleOnSubmit = () => {}
+   const handleOnSubmit = (event) => {
+      event.preventDefault();
 
-   const handleOnInputChange = event => {
-      
+      axios.post('/api/users/', {
+         id: userIdState,
+         username: usernameState,
+         name: nameState,
+         email: emailState,
+         password: passwordState,
+         createdOn: createdOnState
+      })
+         .then(response => {
+            console.log("You Created a New User");   
+            setCreatedUser(true);       
+         })
+         .catch(error => console.log(error));
+
+         // props.history.push('/');
    }
+
+   const isCreated = createdUser? <Redirect to="/" />: null;
 
    return (
       <Segment style={{margin: "15rem auto", background: "rgba(0,0,0,0)", width: "25%"}}>
-         <Form onSubmit={handleOnSubmit}>
+         {isCreated}
+         <Form onSubmit={handleOnSubmit} method="POST" >
             <Form.Input 
                onChange={event => setUsernameState(event.target.value)}
                placeholder='Username' 
@@ -41,10 +63,10 @@ const registerForm = () => {
                placeholder='Password' 
                name="password" 
                value={passwordState} />
-            <Button name="title" type='submit' content='Create' style={{width: "100%", background: "rgb(240, 156, 96)"}}/>
+            <Button name="title" type='submit' content='Create User' style={{width: "100%", background: "rgb(240, 156, 96)"}}/>
          </Form>
       </Segment>
    );
 };
 
-export default registerForm;
+export default RegisterForm;
