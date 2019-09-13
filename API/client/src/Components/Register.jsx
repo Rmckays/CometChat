@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import { Segment, Form, Button } from 'semantic-ui-react';
 import {v4 as uuid} from "uuid";
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
 const now = new Date();
 
-const RegisterForm = () => {
+const RegisterForm = (props) => {
 
    const [usernameState, setUsernameState] = useState('');
    const [nameState, setNameState] = useState('');
@@ -13,14 +14,10 @@ const RegisterForm = () => {
    const [passwordState, setPasswordState] = useState('');
    const [userIdState, setUserIdState] = useState(uuid());
    const [createdOnState, setCreatedOnState] = useState(now.toISOString());
+   const [createdUser, setCreatedUser] = useState(false);
 
-   const handleOnSubmit = () => {
-      
-      // const now = new Date();
-
-      // // setUserIdState(uuid());
-      // setCreatedOnState(now.toISOString());
-
+   const handleOnSubmit = (event) => {
+      event.preventDefault();
 
       axios.post('/api/users/', {
          id: userIdState,
@@ -30,14 +27,20 @@ const RegisterForm = () => {
          password: passwordState,
          createdOn: createdOnState
       })
-         .then(response => console.log(response))
+         .then(response => {
+            console.log("You Created a New User");   
+            setCreatedUser(true);       
+         })
          .catch(error => console.log(error));
+
+         // props.history.push('/');
    }
 
-
+   const isCreated = createdUser? <Redirect to="/" />: null;
 
    return (
       <Segment style={{margin: "15rem auto", background: "rgba(0,0,0,0)", width: "25%"}}>
+         {isCreated}
          <Form onSubmit={handleOnSubmit} method="POST" >
             <Form.Input 
                onChange={event => setUsernameState(event.target.value)}
