@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import style from './Canvas.module.css';
-import image from '../../Comet2.png';
 import Comet from '../../Components/Comet';
 
 class Canvas extends Component {
@@ -27,7 +26,7 @@ class Canvas extends Component {
       const ctx = canvas.getContext('2d');
       this.createComets();
 
-      setInterval(() => this.drawCanvas(), 70);
+      setInterval(() => this.drawCanvas(canvas, ctx), 70);
       setInterval(() => {
          for (let i = 0; i < this.state.numComets; i++) {
             this.state.comets[i].updateComet(ctx, this.state.width);
@@ -60,15 +59,10 @@ class Canvas extends Component {
       return gradient;
    }
 
-   drawCanvas() {
-      const canvas = this.canvasRef.current;
-      canvas.width = this.state.width;
-      canvas.height = this.state.height;
-      const context = canvas.getContext('2d');
-      const gradient = this.drawGradient(context);
-      context.fillStyle = gradient;
-      // context.fillStyle = 'rgba(0,0,0, 0)';
-      context.fillRect(0, 0, this.state.width, this.state.height);
+   drawCanvas(canvas, ctx) {
+      const gradient = this.drawGradient(ctx);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, this.state.width, this.state.height);
    }
 
    render() {
