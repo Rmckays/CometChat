@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Grid, Container, Feed, Icon } from 'semantic-ui-react';
+import { Grid, Container, Feed, Icon, Input } from 'semantic-ui-react';
 
 const ChatWindow = () => {
    return (
@@ -103,7 +103,8 @@ const ChatWindow = () => {
                </Feed.Content>
             </Feed.Event>
          </Feed>
-         <input
+         {/* <Input
+            action='Send'
             style={{
                marginTop: '0',
                width: '100%',
@@ -111,7 +112,12 @@ const ChatWindow = () => {
                border: 'none',
                lineHeight: '1.4rem',
                fontSize: '1.4rem',
-            }}></input>
+               borderRadius: '0 !important',
+            }}></Input> */}
+         <Input
+            icon={<Icon name='paper plane' inverted circular link />}
+            placeholder='Search...'
+         />
       </Fragment>
    );
 };
