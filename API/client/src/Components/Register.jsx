@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Segment, Form, Button } from 'semantic-ui-react';
 import {v4 as uuid} from "uuid";
+import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
@@ -69,4 +70,15 @@ const RegisterForm = (props) => {
    );
 };
 
-export default RegisterForm;
+const mapStateToProps = (state) => {
+   return {
+      username: state.user.username,
+      userId: state.user.userId,
+      email: state.user.email,
+      name: state.user.name,
+      createdOn: state.user.createdOn,
+      createdUser: state.createdUser,
+   }
+};
+
+export default connect()(RegisterForm);

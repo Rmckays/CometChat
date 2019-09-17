@@ -1,4 +1,4 @@
-const initialState = {};
+import initialState from "./AppState";
 
 const reducer = (state = initialState, action) => {
     return state;
