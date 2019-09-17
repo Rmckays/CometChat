@@ -1,3 +1,11 @@
 /node_modules
 bin
 obj
+.idea
+.idea/.gitignore
+.idea/CometChat.iml
+.idea/codeStyles/
+.idea/dbnavigator.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
