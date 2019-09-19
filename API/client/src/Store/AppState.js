@@ -1,13 +1,15 @@
 const initialState = {
-    user: {
-        username: '',
-        userId: '',
-        email: '',
-        name: '',
-        createdOn: '',
-        password: ''
-    },
-    createdUser: false
+
+    username: '',
+    userId: '',
+    email: '',
+    name: '',
+    createdOn: '',
+    password: '',
+    createdUser: false,
+    userLoggedIn: false,
+    height: window.innerHeight,
+    width: window.innerWidth
 
 };
 

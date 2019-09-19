@@ -103,8 +103,7 @@ const ChatWindow = () => {
                </Feed.Content>
             </Feed.Event>
          </Feed>
-         {/* <Input
-            action='Send'
+         {/* <input
             style={{
                marginTop: '0',
                width: '100%',
@@ -113,11 +112,7 @@ const ChatWindow = () => {
                lineHeight: '1.4rem',
                fontSize: '1.4rem',
                borderRadius: '0 !important',
-            }}></Input> */}
-         <Input
-            icon={<Icon name='paper plane' inverted circular link />}
-            placeholder='Search...'
-         />
+            }}></input> */}
       </Fragment>
    );
 };
