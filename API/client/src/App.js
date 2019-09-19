@@ -20,12 +20,12 @@ class App extends Component {
          <BrowserRouter>
             <div className='App'>
                <Switch>
-                  <Route exact path='/' component={HomePage}></Route>
+                  <Route exact path='/' component={HomePage}/>
                   <Route
                      exact
                      path='/register'
-                     component={RegisterPage}></Route>
-                  <Route exact path='/chat' component={ChatPage}></Route>
+                     component={RegisterPage}/>
+                  <Route exact path='/chat' component={ChatPage} />
                </Switch>
             </div>
          </BrowserRouter>

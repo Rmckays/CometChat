@@ -72,7 +72,7 @@ class Canvas extends Component {
             id='backdrop'
             className={style.canvas}
             width={this.state.width}
-            height={this.state.height}></canvas>
+            height={this.state.height}/>
       );
    }
 }

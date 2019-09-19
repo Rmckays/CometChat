@@ -1,30 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {connect} from 'react-redux';
 import Backdrop from '../Components/Backdrop/Backdrop';
 import Login from '../Components/Login/Login';
 import Footer from '../Components/Footer';
 import Navigation from '../Components/Navigation';
 import Canvas from './Canvas/Canvas';
 
-class HomePage extends Component {
-   constructor() {
-      super();
-      this.state = {
-         height: window.height,
-         width: window.width,
-      };
-   }
+const HomePage = props => {
 
-   render() {
       return (
          <div className='App'>
             <Navigation />
-            <Canvas width={this.state.width} height={this.state.height} />
+            <Canvas width={props.width} height={props.height} />
             <Backdrop />
             <Login />
             <Footer />
          </div>
       );
-   }
-}
+};
 
-export default HomePage;
+const mapStateToProps = state => {
+    return {
+        width: state.width,
+        height: state.height
+    }
+};
+
+export default connect(mapStateToProps)(HomePage);

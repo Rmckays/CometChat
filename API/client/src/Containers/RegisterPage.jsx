@@ -1,30 +1,29 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import Backdrop from '../Components/Backdrop/Backdrop';
 import Register from '../Components/Register';
 import Footer from '../Components/Footer';
 import Navigation from '../Components/Navigation';
 import Canvas from './Canvas/Canvas';
 
-class RegisterPage extends Component {
-   constructor() {
-      super();
-      this.state = {
-         height: window.height,
-         width: window.width,
-      };
-   }
+const RegisterPage = props => {
 
-   render() {
       return (
          <div className='App'>
             <Navigation />
-            <Canvas width={this.state.width} height={this.state.height} />
+            <Canvas width={props.width} height={props.height} />
             <Backdrop />
             <Register />
             <Footer />
          </div>
       );
-   }
+};
+
+const mapStateToProps = state => {
+    return {
+        width: state.width,
+        height: state.height
+    }
 }
 
-export default RegisterPage;
+export default connect(mapStateToProps)(RegisterPage);
