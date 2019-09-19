@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import Backdrop from '../Components/Backdrop/Backdrop';
 import Register from '../Components/Register';

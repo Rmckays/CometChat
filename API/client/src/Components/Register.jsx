@@ -5,36 +5,31 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
-const now = new Date();
 
 const RegisterForm = (props) => {
 
-   const [usernameState, setUsernameState] = useState('');
-   // const [nameState, setNameState] = useState('');
-   const [emailState, setEmailState] = useState('');
-   const [passwordState, setPasswordState] = useState('');
-   const [userIdState, setUserIdState] = useState(uuid());
-   const [createdOnState, setCreatedOnState] = useState(now.toISOString());
    const [createdUser, setCreatedUser] = useState(false);
 
    const handleOnSubmit = (event) => {
       event.preventDefault();
 
+      const now = new Date();
+      const userId = uuid();
+
+
       axios.post('/api/users/', {
-         id: userIdState,
-         username: this.props.username,
-         name: this.props.name,
-         email: this.props.email,
-         password: this.props.password,
-         createdOn: createdOnState
+         id: userId,
+         username: props.username,
+         name: props.name,
+         email: props.email,
+         password: props.password,
+         createdOn: now.toISOString()
       })
          .then(response => {
             console.log("You Created a New User");   
             setCreatedUser(true);       
          })
          .catch(error => console.log(error));
-
-         // props.history.push('/');
    };
 
    const isCreated = createdUser? <Redirect to="/" />: null;
@@ -44,10 +39,10 @@ const RegisterForm = (props) => {
          {isCreated}
          <Form onSubmit={handleOnSubmit} method="POST" >
             <Form.Input 
-               onChange={event => setUsernameState(event.target.value)}
+               onChange={props.onUsernameChange}
                placeholder='Username' 
                name="username" 
-               // value={this.props.username}
+               value={props.username}
             />
             <Form.Input 
                onChange={props.onNameChange}
@@ -55,17 +50,17 @@ const RegisterForm = (props) => {
                name="name" 
                value={props.name} />
             <Form.Input 
-               onChange={event => setEmailState(event.target.value)}
+               onChange={props.onEmailChange}
                type='email' 
                placeholder='Email' 
                name="email" 
-               // value={this.props.email}
+               value={props.email}
             />
             <Form.Input 
-               onChange={event => setPasswordState(event.target.value)}
+               onChange={props.onPasswordChange}
                placeholder='Password' 
                name="password" 
-               // value={this.props.password}
+               value={props.password}
             />
             <Button name="title" type='submit' content='Create User' style={{width: "100%", background: "rgb(240, 156, 96)"}}/>
          </Form>
@@ -79,6 +74,7 @@ const mapStateToProps = state => {
       userId: state.userId,
       email: state.email,
       name: state.name,
+      password: state.password,
       createdOn: state.createdOn,
       createdUser: state.createdUser,
    }
@@ -88,7 +84,20 @@ const mapDispatchToProps = dispatch => {
    return {
       onNameChange: (event) => {
          let newName = event.target.value;
-         dispatch({type: 'NAMECHANGE', val: newName});}
+         dispatch({type: 'NAMECHANGE', val: newName});},
+      onEmailChange: event => {
+         let email = event.target.value;
+         dispatch({type:'EMAILCHANGE', val: email});
+      },
+      onUsernameChange: event => {
+         let username = event.target.value;
+         dispatch({type:'USERNAMECHANGE', val: username});
+      },
+      onPasswordChange: event => {
+         let password = event.target.value;
+         console.log(password);
+         dispatch({type:'PASSWORDCHANGE', val: password});
+      },
    };
 };
 

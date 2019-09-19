@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import HomePage from './Containers/Homepage';
-import ChannelsPage from './Containers/ChannelsPage';
 import RegisterPage from './Containers/RegisterPage';
 import ChatPage from './Containers/ChatPage';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
