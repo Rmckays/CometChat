@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import Backdrop from '../Components/Backdrop/Backdrop';
 import Register from '../Components/Register';
@@ -8,8 +8,8 @@ import Canvas from './Canvas/Canvas';
 
 const RegisterPage = props => {
 
-      return (
-         <div className='App'>
+    return (
+        <div className='App'>
             <Navigation />
             <Canvas width={props.width} height={props.height} />
             <Backdrop />
@@ -22,8 +22,9 @@ const RegisterPage = props => {
 const mapStateToProps = state => {
     return {
         width: state.width,
-        height: state.height
+        height: state.height,
     }
-}
+};
+
 
 export default connect(mapStateToProps)(RegisterPage);

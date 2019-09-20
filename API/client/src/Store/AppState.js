@@ -9,7 +9,9 @@ const initialState = {
     createdUser: false,
     userLoggedIn: false,
     height: window.innerHeight,
-    width: window.innerWidth
+    width: window.innerWidth,
+    loggedInUser: '',
+    userAuthenticated: false
 
 };
 

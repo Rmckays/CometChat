@@ -1,14 +1,16 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { Segment, Form, Button } from 'semantic-ui-react';
 import {v4 as uuid} from "uuid";
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
-
 const RegisterForm = (props) => {
 
-   const [createdUser, setCreatedUser] = useState(false);
+   useEffect(() => {
+      if(props.createdUser){
+         props.onReloadPage()}
+   });
 
    const handleOnSubmit = (event) => {
       event.preventDefault();
@@ -27,12 +29,12 @@ const RegisterForm = (props) => {
       })
          .then(response => {
             console.log("You Created a New User");   
-            setCreatedUser(true);       
+            props.userCreated();
          })
          .catch(error => console.log(error));
    };
 
-   const isCreated = createdUser? <Redirect to="/" />: null;
+   const isCreated = props.createdUser? <Redirect to="/" />: null;
 
    return (
       <Segment style={{margin: "15rem auto", background: "rgba(0,0,0,0)", width: "25%"}}>
@@ -95,9 +97,18 @@ const mapDispatchToProps = dispatch => {
       },
       onPasswordChange: event => {
          let password = event.target.value;
-         console.log(password);
          dispatch({type:'PASSWORDCHANGE', val: password});
       },
+      userCreated: () => dispatch({type: 'USERCREATED', val: true}),
+      onReloadPage: () => dispatch({type:'RELOADPAGE', payload: {
+         username: '',
+         name: '',
+         password: '',
+         createdOn: '',
+         userId: '',
+         email: '',
+         createdUser: false
+         }})
    };
 };
 
