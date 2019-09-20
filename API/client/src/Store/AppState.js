@@ -10,8 +10,15 @@ const initialState = {
     userLoggedIn: false,
     height: window.innerHeight,
     width: window.innerWidth,
-    loggedInUser: '',
-    userAuthenticated: false
+    loggedInUser: {
+        userId: '',
+        name: '',
+        username: ''
+    },
+    userAuthenticated: false,
+    message: [],
+    usernameRequest: '',
+    passwordRequest: ''
 
 };
 
