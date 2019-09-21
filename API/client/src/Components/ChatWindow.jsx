@@ -1,6 +1,8 @@
 import React, { Fragment, useEffect } from 'react';
 import {connect} from 'react-redux';
-import { Feed} from 'semantic-ui-react';
+import {Feed} from 'semantic-ui-react';
+import {v4 as uuid} from "uuid";
+import Moment from 'react-moment';
 import axios from 'axios';
 
 const ChatWindow = (props) => {
@@ -15,7 +17,7 @@ const ChatWindow = (props) => {
                 <Feed.Content>
                     <Feed.Summary>
                         <Feed.User>{message.user.name}</Feed.User>
-                        <Feed.Date>{message.createdAt}</Feed.Date>
+                        <Feed.Date><Moment fromNow>{message.createdAt}</Moment></Feed.Date>
                     </Feed.Summary>
                     <Feed.Extra text>
                         {message.text}
@@ -24,14 +26,43 @@ const ChatWindow = (props) => {
             </Feed.Event>
     });
 
+    const handleOnSubmit = (event) => {
+        event.preventDefault();
+
+        console.log(event.target[0].value);
+
+        const now = new Date();
+        const messageId = uuid();
+
+
+        axios.post('/api/messages/', {
+            id: messageId,
+            userid: props.loggedInUser.userId,
+            channelid: props.currentChannelId,
+            text: event.target[0].value,
+            createdAt: now.toISOString()
+        })
+            .then(response => {
+                console.log("You Created a message");
+
+            })
+            .catch(error => console.log(error));
+        event.target.value = '';
+    };
+
    useEffect(() => {
        axios.get(`/api/messages/channels/2790a38f-87b2-41ab-b893-d945188b32fa`)
            .then(response => {
                 props.loadMessagesByChannel(response);
-                console.log(response.data);
            })
            .catch(error => console.log(error));
-   }, []);
+   }, [props.currentChannelId]);
+
+   // Use this to reload messages when a message is submitted.
+   // useEffect();
+
+   // Use this to reload messages when a channel is changed.
+   // useEffect();
 
    return (
       <Fragment>
@@ -44,7 +75,7 @@ const ChatWindow = (props) => {
             }}>
              {createMessages}
          </Feed>
-         <form className="ui action"
+         <form onSubmit={handleOnSubmit} method="POST" className="ui action"
               style={{
                  marginTop: '0',
                  width: '100%',
@@ -54,7 +85,7 @@ const ChatWindow = (props) => {
                  fontSize: '1.4rem',
                  borderRadius: '0 !important',
               }} >
-            <input type="text" placeholder="Search..."
+            <input type="text" placeholder="Enter your message"
                    style={{paddingLeft: '1rem',
                            borderRadius: 'none',
                            width: '90%', border: 'none',
@@ -69,6 +100,7 @@ const mapStateToProps = state => {
    return {
       messages: state.messages,
       loggedInUser: state.loggedInUser,
+      currentChannelId: state.currentChannelId
    }
 };
 
