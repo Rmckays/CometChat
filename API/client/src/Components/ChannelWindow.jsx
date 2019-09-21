@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-import { Grid, Container, Menu } from 'semantic-ui-react';
+import React, { useState, useEffect } from 'react';
+import { Menu } from 'semantic-ui-react';
+import {connect} from 'react-redux';
 
 const ChannelWindow = () => {
    const [activeChannelStyle, setActiveChannelStyle] = useState('general');
+
+   // useEffect();
 
    return (
       <Menu
@@ -24,4 +27,19 @@ const ChannelWindow = () => {
    );
 };
 
-export default ChannelWindow;
+const mapStateToProps = state => {
+    return {
+        currentChannelId: state.currentChannelId,
+        currentChannelName: state.currentChannelName
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onChannelChange: event => {
+            dispatch({type: 'CHANNELCHANGE', val: event.target.value})
+        },
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChannelWindow);

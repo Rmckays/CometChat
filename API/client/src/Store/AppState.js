@@ -16,7 +16,10 @@ const initialState = {
         username: ''
     },
     userAuthenticated: false,
-    message: [],
+    messages: [],
+    channels: [],
+    currentChannelId: '',
+    currentChannelName: '',
     usernameRequest: '',
     passwordRequest: ''
 

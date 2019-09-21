@@ -4,7 +4,7 @@ import Canvas from './Canvas/Canvas';
 import Navigation from '../Components/Navigation';
 import ChatWindow from '../Components/ChatWindow';
 import ChannelWindow from '../Components/ChannelWindow';
-import { Grid, Container, Feed, Icon, Menu } from 'semantic-ui-react';
+import { Grid, Container } from 'semantic-ui-react';
 
 class ChatPage extends Component {
    constructor() {
