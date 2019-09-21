@@ -2,52 +2,43 @@ import initialState from "./AppState";
 
 const reducer = (state = initialState, action) => {
 
-    if(action.type === "NAMECHANGE"){
-        return {
-            ...state,
-            name: action.val,
-        }
-    }
-
-    if(action.type === "EMAILCHANGE"){
-        return {
-            ...state,
-            email: action.val,
-        }
-    }
-
-    if(action.type === "USERNAMECHANGE"){
-        return {
-            ...state,
-            username: action.val,
-        }
-    }
-
-    if(action.type === "PASSWORDCHANGE"){
-        return {
-            ...state,
-            password: action.val,
-        }
-    }
-
-    if(action.type === "USERCREATED"){
-        return {
-            ...state,
-            createdUser: action.val
-        }
-    }
-
-    if(action.type === "RELOADPAGE"){
-        return {
-            ...state,
-            username: action.payload.username,
-            name: action.payload.name,
-            email: action.payload.email,
-            password: action.payload.password,
-            createdOn: action.payload.createdOn,
-            userId: action.payload.userId,
-            createdUser: action.payload.createdUser
-        }
+    switch(action.type){
+        case 'NAMECHANGE':
+            return {
+                ...state,
+                name: action.val,
+            };
+        case 'EMAILCHANGE':
+            return {
+                ...state,
+                email: action.val,
+            };
+        case 'USERNAMECHANGE':
+            return {
+                ...state,
+                username: action.val,
+            };
+        case 'PASSWORDCHANGE':
+            return {
+                ...state,
+                password: action.val,
+            };
+        case 'USERCREATED':
+            return {
+                ...state,
+                createdUser: action.val
+            };
+        case 'RELOADPAGE':
+            return {
+                ...state,
+                username: action.payload.username,
+                name: action.payload.name,
+                email: action.payload.email,
+                password: action.payload.password,
+                createdOn: action.payload.createdOn,
+                userId: action.payload.userId,
+                createdUser: action.payload.createdUser
+            };
     }
 
     return state;

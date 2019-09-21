@@ -14,7 +14,11 @@ const loginForm = (props) => {
             }
         })
             .then(response => {
-            console.log(response);
+                if(props.passwordRequest === response.password){
+                    props.loginUser(response);
+                } else {
+
+                }
         })
             .catch(err => console.log(err.data));
     };
@@ -54,6 +58,13 @@ const mapDispatchToProps = dispatch => {
     return {
         onUsernameChange: event => {
 
+        },
+        loginUser: response => {
+            dispatch({type: 'LOGINUSER', payload:{
+                userId: response.id,
+                username: response.username,
+                name: response.name,
+            }})
         }
     }
 };

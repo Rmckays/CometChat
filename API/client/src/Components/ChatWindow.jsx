@@ -1,7 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import {connect} from 'react-redux';
 import { Grid, Container, Feed, Icon, Input } from 'semantic-ui-react';
 
-const ChatWindow = () => {
+const ChatWindow = (props) => {
+
+   // useEffect();
+
    return (
       <Fragment>
          <Feed
@@ -103,7 +107,7 @@ const ChatWindow = () => {
                </Feed.Content>
             </Feed.Event>
          </Feed>
-         {/* <input
+          <input
             style={{
                marginTop: '0',
                width: '100%',
@@ -112,9 +116,16 @@ const ChatWindow = () => {
                lineHeight: '1.4rem',
                fontSize: '1.4rem',
                borderRadius: '0 !important',
-            }}></input> */}
+            }} />
       </Fragment>
    );
 };
 
-export default ChatWindow;
+const mapStateToProps = state => {
+   return {
+      messages: state.messages,
+      loggedInUser: state.loggedInUser,
+   }
+};
+
+export default connect()(ChatWindow);
