@@ -51,6 +51,13 @@ const reducer = (state = initialState, action) => {
                 currentChannelId: action.payload.id,
                 currentChannelName: action.payload.name
             };
+        case "LOADMESSAGESBYCHANNEL":
+            const newMessages = action.val.filter(messages => messages);
+
+            return {
+                ...state,
+                messages: newMessages
+            }
     }
 
     return state;
