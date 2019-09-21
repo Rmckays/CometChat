@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Menu } from 'semantic-ui-react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 
 const ChannelWindow = (props) => {
-   const [activeChannelStyle, setActiveChannelStyle] = useState('general');
 
    const createChannels = props.channels.map(channel => {
        return <Menu.Item
             name={channel.name}
-            active={activeChannelStyle === `${channel.name}`}
-            value={channel.Id}
+            onClick={props.onChannelChange}
+            active={props.currentChannelId === `${channel.id}`}
+            id={channel.id}
        />
    });
 
@@ -20,10 +20,6 @@ const ChannelWindow = (props) => {
             props.loadChannels(response.data);
         })
         .catch(error => console.log(error))}, []);
-
-   useEffect(() => {
-       },
-       [props.channels]);
 
    return (
       <Menu
@@ -50,10 +46,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onChannelChange: event => {
-            dispatch({type: 'CHANNELCHANGE', val: event.target.value})
+            dispatch({type: 'CHANNELCHANGE', payload: {id: event.target.id, name: event.target.name}})
         },
         loadChannels: response => {
-            console.log(response);
             dispatch({type: 'LOADCHANNELS', val: response})
         }
     }
