@@ -18,6 +18,7 @@ const initialState = {
     userAuthenticated: false,
     messages: [],
     channels: [],
+    users: [],
     currentChannelId: '',
     currentChannelName: '',
     usernameRequest: '',

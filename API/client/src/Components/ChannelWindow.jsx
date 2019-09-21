@@ -1,11 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { Menu } from 'semantic-ui-react';
+import axios from 'axios';
 import {connect} from 'react-redux';
 
-const ChannelWindow = () => {
+const ChannelWindow = (props) => {
    const [activeChannelStyle, setActiveChannelStyle] = useState('general');
 
-   // useEffect();
+   const createChannels = props.channels.map(channel => {
+       return <Menu.Item
+            name={channel.name}
+            active={activeChannelStyle === `${channel.name}`}
+            value={channel.Id}
+       />
+   });
+
+   useEffect(() => {
+    axios.get('/api/channels/')
+        .then(response => {
+            props.loadChannels(response.data);
+        })
+        .catch(error => console.log(error))}, []);
+
+   useEffect(() => {
+       },
+       [props.channels]);
 
    return (
       <Menu
@@ -16,13 +34,7 @@ const ChannelWindow = () => {
             height: '100%',
             borderRadius: '0',
          }}>
-         <Menu.Item active={activeChannelStyle === 'general'} name='general' />
-         <Menu.Item
-            active={activeChannelStyle === 'javascript'}
-            name='javascript'
-         />
-         <Menu.Item active={activeChannelStyle === 'react'} name='react' />
-         <Menu.Item active={activeChannelStyle === 'asp.net'} name='asp.net' />
+         {createChannels}
       </Menu>
    );
 };
@@ -30,7 +42,8 @@ const ChannelWindow = () => {
 const mapStateToProps = state => {
     return {
         currentChannelId: state.currentChannelId,
-        currentChannelName: state.currentChannelName
+        currentChannelName: state.currentChannelName,
+        channels: state.channels
     }
 };
 
@@ -39,6 +52,10 @@ const mapDispatchToProps = dispatch => {
         onChannelChange: event => {
             dispatch({type: 'CHANNELCHANGE', val: event.target.value})
         },
+        loadChannels: response => {
+            console.log(response);
+            dispatch({type: 'LOADCHANNELS', val: response})
+        }
     }
 }
 

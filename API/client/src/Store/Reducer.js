@@ -39,6 +39,12 @@ const reducer = (state = initialState, action) => {
                 userId: action.payload.userId,
                 createdUser: action.payload.createdUser
             };
+        case 'LOADCHANNELS':
+            const newChannels = action.val.filter(channels => channels);
+
+            return {
+                ...state, channels: newChannels
+            }
     }
 
     return state;
