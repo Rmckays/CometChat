@@ -26,7 +26,7 @@ const loginForm = (props) => {
    const isLoggedIn = props.userLoggedIn? <Redirect to="/chat" />: null;
 
    return (
-      <Segment style={{margin: "15rem auto", background: "rgba(0,0,0,0)", width: "25%"}}>
+      <Segment style={{margin: "20rem auto", background: "rgba(0,0,0,0)", width: "25%", borderColor: 'rgb(211,114,228)'}}>
           {isLoggedIn}
          <Form onSubmit={handleOnSubmit}>
             <Form.Input 
@@ -37,7 +37,7 @@ const loginForm = (props) => {
                placeholder='Password' 
                name="password" 
                value="" />
-            <Button name="login" type='submit' content='Login' style={{width: "100%", background: "rgb(240, 156, 96)"}}/>
+            <Button name="login" type='submit' content='Login' style={{width: "100%", background: "rgb(211,114,228)"}}/>
          </Form>
       </Segment>
    );

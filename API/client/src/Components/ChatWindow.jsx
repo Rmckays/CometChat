@@ -93,7 +93,7 @@ const ChatWindow = (props) => {
                            borderRadius: 'none',
                            width: '90%', border: 'none',
                            height: '100%'}}/>
-            <button type="submit" className="ui" style={{border: 'none', width: '10%', height: '100%', background: "rgb(240, 156, 96)"}}>Send</button>
+            <button type="submit" className="ui" style={{border: 'none', width: '10%', height: '100%', background: "rgb(211,114,228)"}}>Send</button>
          </form>
       </Fragment>
    );

@@ -43,7 +43,7 @@ const RegisterForm = (props) => {
    const isCreated = props.createdUser? <Redirect to="/" />: null;
 
    return (
-      <Segment style={{margin: "15rem auto", background: "rgba(0,0,0,0)", width: "25%"}}>
+      <Segment style={{margin: "15rem auto", background: "rgba(0,0,0,0)", width: "25%", borderColor: 'rgb(211,114,228)'}}>
          {isCreated}
          <Form onSubmit={handleOnSubmit} method="POST" >
             <Form.Input 
@@ -76,7 +76,7 @@ const RegisterForm = (props) => {
                name="password" 
                value={props.password}
             />
-            <Button name="title" type='submit' content='Create User' style={{width: "100%", background: "rgb(240, 156, 96)"}}/>
+            <Button name="title" type='submit' content='Create User' style={{width: "100%", background: "rgb(211,114,228)"}}/>
          </Form>
       </Segment>
    );
