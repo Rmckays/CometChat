@@ -29,6 +29,7 @@ const ChannelWindow = (props) => {
             background: 'rgba(255,255,255, 0.7)',
             height: '100%',
             borderRadius: '0',
+             maxHeight: '800px'
          }}>
          {createChannels}
       </Menu>

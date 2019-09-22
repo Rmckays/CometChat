@@ -1,4 +1,5 @@
-﻿using Application.Users;
+﻿using API.SignalR;
+using Application.Users;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,6 +30,7 @@ namespace API
             Configuration.RootPath = "client/build";
          });
          services.AddMediatR(typeof(List.Handler).Assembly);
+         services.AddSignalR();
          services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
       }
 
@@ -45,6 +47,8 @@ namespace API
             // app.UseHsts();
          }
 
+         app.UseSignalR(routes => {routes.MapHub<ChatHub>("/hub/chat");});
+         
          app.UseMvc();
 
          app.UseSpa(spa =>

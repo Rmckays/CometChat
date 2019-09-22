@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Domain;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 namespace Application.Messages
@@ -11,7 +12,7 @@ namespace Application.Messages
    public class CreateMessage
    {
 
-      public class Command : IRequest
+      public class Command : IRequest<Message>
       {
          public Guid Id { get; set; }
 
@@ -24,7 +25,7 @@ namespace Application.Messages
          public DateTime CreatedAt { get; set; }
       }
 
-      public class Handler : IRequestHandler<Command>
+      public class Handler : IRequestHandler<Command, Message>
       {
          public Handler(ChatAppContext context)
          {
@@ -33,10 +34,10 @@ namespace Application.Messages
 
          public readonly ChatAppContext _context;
 
-         public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+         public async Task<Message> Handle(Command request, CancellationToken cancellationToken)
          {
-            var user = _context.Users.FirstOrDefault(x => x.Id == request.UserId);
-            var channel = _context.Channels.FirstOrDefault(x => x.Id == request.ChannelId);
+            var user =  await _context.Users.FirstOrDefaultAsync(x => x.Id == request.UserId);
+            var channel = await _context.Channels.FirstOrDefaultAsync(x => x.Id == request.ChannelId);
 
             var message = new Message
             {
@@ -50,7 +51,7 @@ namespace Application.Messages
             _context.Messages.Add(message);
             var success = await _context.SaveChangesAsync() > 0;
 
-            if (success) return Unit.Value;
+            if (success) return message;
 
             throw new Exception("Problem saving message");
          }

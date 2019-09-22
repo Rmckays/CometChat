@@ -21,11 +21,11 @@ namespace API.Controllers
          _mediator = mediator;
       }
 
-      [HttpPost]
-      public async Task<ActionResult<Unit>> Create(CreateMessage.Command command)
-      {
-         return await _mediator.Send(command);
-      }
+//      [HttpPost]
+//      public async Task<ActionResult<Unit>> Create(CreateMessage.Command command)
+//      {
+//         return await _mediator.Send(command);
+//      }
 
       [HttpPut("{id}")]
 
