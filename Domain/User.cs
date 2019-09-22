@@ -13,6 +13,7 @@ namespace Domain
 
       public string Password { get; set; }
 
+      public string Avatar { get; set; }
       public DateTime CreatedOn { get; set; }
    }
 }

@@ -12,7 +12,7 @@ const ChatWindow = (props) => {
             style={{padding: '1rem'}}
             id={message.id}>
                 <Feed.Label>
-                    <img src='https://react.semantic-ui.com/images/avatar/small/elliot.jpg' />
+                    <img src={message.user.avatar} />
                 </Feed.Label>
                 <Feed.Content>
                     <Feed.Summary>
@@ -59,7 +59,9 @@ const ChatWindow = (props) => {
    }, [props.currentChannelId]);
 
    // Use this to reload messages when a message is submitted.
-   // useEffect();
+   // useEffect(() => {
+   //     props.loadMessagesByChannel();
+   // });
 
    // Use this to reload messages when a channel is changed.
    // useEffect();

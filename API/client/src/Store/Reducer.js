@@ -23,6 +23,18 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 password: action.val,
             };
+        case 'GENDERCHANGE':
+            const random = Math.floor(Math.random() * 3);
+            let newAvatar;
+            if(action.val === 'male'){
+                newAvatar = state.maleAvatars[random];
+            } else if(action.val ==='female'){
+                newAvatar = state.femaleAvatars[random];
+            }
+
+            return {
+                ...state, avatar: newAvatar
+            };
         case 'USERCREATED':
             return {
                 ...state,

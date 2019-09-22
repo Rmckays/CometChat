@@ -19,6 +19,8 @@ namespace Application.Users
          public string Name { get; set; }
 
          public string Password { get; set; }
+         
+         public string Avatar { get; set; }
          public DateTime CreatedOn { get; set; }
       }
 
@@ -39,6 +41,7 @@ namespace Application.Users
                CreatedOn = request.CreatedOn,
                Email = request.Email,
                Name = request.Name,
+               Avatar = request.Avatar,
                Password = request.Password
             };
 

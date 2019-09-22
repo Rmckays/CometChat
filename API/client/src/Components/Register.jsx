@@ -5,6 +5,11 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
+const options = [
+   { key: 'm', text: 'Male', value: 'male' },
+   { key: 'f', text: 'Female', value: 'female' },
+]
+
 const RegisterForm = (props) => {
 
    useEffect(() => {
@@ -51,6 +56,12 @@ const RegisterForm = (props) => {
                placeholder='Name' 
                name="name" 
                value={props.name} />
+            <Form.Select
+                fluid
+                onChange={props.onGenderChange}
+                options={options}
+                placeholder='Gender'
+            />
             <Form.Input 
                onChange={props.onEmailChange}
                type='email' 
@@ -108,7 +119,8 @@ const mapDispatchToProps = dispatch => {
          userId: '',
          email: '',
          createdUser: false
-         }})
+         }}),
+      onGenderChange: event => dispatch({type: 'GENDERCHANGE', val: event.target.value}),
    };
 };
 
