@@ -26,9 +26,9 @@ const reducer = (state = initialState, action) => {
         case 'GENDERCHANGE':
             const random = Math.floor(Math.random() * 3);
             let newAvatar;
-            if(action.val === 'male'){
+            if(action.val === 'Male'){
                 newAvatar = state.maleAvatars[random];
-            } else if(action.val ==='female'){
+            } else if(action.val ==='Female'){
                 newAvatar = state.femaleAvatars[random];
             }
 

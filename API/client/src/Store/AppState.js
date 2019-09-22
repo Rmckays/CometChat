@@ -12,7 +12,7 @@ const initialState = {
     height: window.innerHeight,
     width: window.innerWidth,
     loggedInUser: {
-        userId: '4e18b2aa-f269-4965-8a2a-1d13ca81da50',
+        userId: 'd6775a1b-d7f9-419a-809c-e623b23a7565',
         name: '',
         username: ''
     },

@@ -28,6 +28,7 @@ const RegisterForm = (props) => {
          id: userId,
          username: props.username,
          name: props.name,
+         avatar: props.avatar,
          email: props.email,
          password: props.password,
          createdOn: now.toISOString()
@@ -88,8 +89,10 @@ const mapStateToProps = state => {
       email: state.email,
       name: state.name,
       password: state.password,
+      avatar: state.avatar,
       createdOn: state.createdOn,
       createdUser: state.createdUser,
+
    }
 };
 
@@ -118,9 +121,12 @@ const mapDispatchToProps = dispatch => {
          createdOn: '',
          userId: '',
          email: '',
+         avatar: '',
          createdUser: false
          }}),
-      onGenderChange: event => dispatch({type: 'GENDERCHANGE', val: event.target.value}),
+      onGenderChange: event => {
+         console.log(event.target.innerText);
+         dispatch({type: 'GENDERCHANGE', val: event.target.innerText})},
    };
 };
 
