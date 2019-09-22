@@ -19,7 +19,6 @@ namespace API.SignalR
 
         public async Task SendMessage(CreateMessage.Command command)
         {
-            
             var message = await _mediator.Send(command);
             await Clients.All.SendAsync("ReceiveMessage", message);
         }

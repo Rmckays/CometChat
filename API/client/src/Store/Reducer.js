@@ -78,6 +78,26 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 messages: newMessages
             };
+        case "USERNAMEREQUESTCHANGE":
+            return {
+                ...state,
+                usernameRequest: action.val,
+            };
+        case "PASSWORDREQUESTCHANGE":
+            return {
+                ...state,
+                passwordRequest: action.val
+            }
+        case "LOGINUSER":
+            const loggedUser = Object.assign(state.loggedInUser);
+            loggedUser.userId = action.payload.userId;
+            loggedUser.username = action.payload.username;
+            loggedUser.name = action.payload.name;
+            return {
+                ...state,
+                loggedInUser: loggedUser,
+                userAuthenticated: true
+            }
     }
 
     return state;

@@ -76,7 +76,7 @@ const ChatWindow = (props) => {
                overflowY: 'scroll',
                 maxHeight: '800px'
             }}>
-             {createMessages}
+                {createMessages}
          </Feed>
          <form onSubmit={handleOnSubmit} method="POST" className="ui action"
               style={{
