@@ -4,6 +4,12 @@ import {Feed} from 'semantic-ui-react';
 import {v4 as uuid} from "uuid";
 import Moment from 'react-moment';
 import axios from 'axios';
+import {HubConnectionBuilder} from "@aspnet/signalr";
+
+const connection = new HubConnectionBuilder().withUrl("/hub/chat").build();
+connection.start()
+    .then(response => console.log("Start", response))
+    .catch(err => console.log(err));
 
 const ChatWindow = (props) => {
 
@@ -29,42 +35,35 @@ const ChatWindow = (props) => {
     const handleOnSubmit = (event) => {
         event.preventDefault();
 
-        console.log(event.target[0].value);
-
         const now = new Date();
-        const messageId = uuid();
+        const id = uuid();
+        const userid = props.loggedInUser.userId;
+        const channelid = props.currentChannelId;
+        const text = event.target[0].value;
+        const createdAt = now.toISOString();
 
-
-        axios.post('/api/messages/', {
-            id: messageId,
-            userid: props.loggedInUser.userId,
-            channelid: props.currentChannelId,
-            text: event.target[0].value,
-            createdAt: now.toISOString()
-        })
+        connection.invoke("SendMessage", {id, userid, channelid, text, createdAt})
             .then(response => {
                 console.log("You Created a message");
-
             })
-            .catch(error => console.log(error));
-        event.target.value = '';
+            .catch(err => console.log(err));
+        event.target[0].value = '';
     };
 
-   useEffect(() => {
-       axios.get(`/api/messages/channels/${props.currentChannelId}`)
-           .then(response => {
+    useEffect(() => {
+        axios.get(`/api/messages/channels/${props.currentChannelId}`)
+            .then(response => {
                 props.loadMessagesByChannel(response);
-           })
-           .catch(error => console.log(error));
-   }, [props.currentChannelId]);
+            })
+            .catch(error => console.log(error));
+    }, [props.currentChannelId]);
 
-   // Use this to reload messages when a message is submitted.
-   // useEffect(() => {
-   //     props.loadMessagesByChannel();
-   // });
 
-   // Use this to reload messages when a channel is changed.
-   // useEffect();
+    useEffect(() => {
+        connection.on("ReceiveMessage", message => {
+            props.receiveMessage(message);
+        });
+    }, []);
 
    return (
       <Fragment>
@@ -74,6 +73,8 @@ const ChatWindow = (props) => {
                backgroundColor: 'rgba(255,255,255, 0.7)',
                height: '92.5%',
                marginBottom: '2.5%',
+               overflowY: 'scroll',
+                maxHeight: '800px'
             }}>
              {createMessages}
          </Feed>
@@ -110,8 +111,11 @@ const mapDispatchToProps = dispatch => {
     return {
         loadMessagesByChannel: response => {
             dispatch({type: "LOADMESSAGESBYCHANNEL", val: response.data});
+        },
+        receiveMessage: message => {
+            dispatch({type:"RECEIVEMESSAGE", message: message});
         }
-    }
+        }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatWindow);
