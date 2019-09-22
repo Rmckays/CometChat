@@ -51,7 +51,7 @@ const ChatWindow = (props) => {
     };
 
    useEffect(() => {
-       axios.get(`/api/messages/channels/2790a38f-87b2-41ab-b893-d945188b32fa`)
+       axios.get(`/api/messages/channels/${props.currentChannelId}`)
            .then(response => {
                 props.loadMessagesByChannel(response);
            })

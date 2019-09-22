@@ -58,6 +58,7 @@ const reducer = (state = initialState, action) => {
                 ...state, channels: newChannels
             };
         case 'CHANNELCHANGE':
+            console.log(state.currentChannelId);
             return {
                 ...state,
                 currentChannelId: action.payload.id,
