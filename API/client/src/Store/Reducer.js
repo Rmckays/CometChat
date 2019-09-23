@@ -58,7 +58,6 @@ const reducer = (state = initialState, action) => {
                 ...state, channels: newChannels
             };
         case 'CHANNELCHANGE':
-            console.log(state.currentChannelId);
             return {
                 ...state,
                 currentChannelId: action.payload.id,
@@ -73,11 +72,15 @@ const reducer = (state = initialState, action) => {
                 messages: allMessages
             };
         case "RECEIVEMESSAGE":
-            const newMessages = state.messages.concat(action.message);
-            return {
-                ...state,
-                messages: newMessages
-            };
+            if(action.message.channel.id === state.currentChannelId){
+                console.log("It matches");
+                const newMessages = state.messages.concat(action.message);
+                return {
+                    ...state,
+                    messages: newMessages
+                };
+            }
+            break;
         case "USERNAMEREQUESTCHANGE":
             return {
                 ...state,

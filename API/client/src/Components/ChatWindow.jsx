@@ -6,12 +6,17 @@ import Moment from 'react-moment';
 import axios from 'axios';
 import {HubConnectionBuilder} from "@aspnet/signalr";
 
-const connection = new HubConnectionBuilder().withUrl("/hub/chat").build();
-connection.start()
-    .then(response => console.log("Start", response))
-    .catch(err => console.log(err));
+// const connection = new HubConnectionBuilder().withUrl("/hub/chat").build();
+// connection.start()
+//     .then(response => console.log("Start", response))
+//     .catch(err => console.log(err));
 
 const ChatWindow = (props) => {
+
+    const connection = new HubConnectionBuilder().withUrl("/hub/chat").build();
+    connection.start()
+        .then(response => console.log("Start", response))
+        .catch(err => console.log(err));
 
     const createMessages = props.messages.map(message => {
         return <Feed.Event
@@ -103,7 +108,7 @@ const mapStateToProps = state => {
    return {
       messages: state.messages,
       loggedInUser: state.loggedInUser,
-      currentChannelId: state.currentChannelId
+      currentChannelId: state.currentChannelId,
    }
 };
 
@@ -115,7 +120,7 @@ const mapDispatchToProps = dispatch => {
         receiveMessage: message => {
             dispatch({type:"RECEIVEMESSAGE", message: message});
         }
-        }
+    }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatWindow);

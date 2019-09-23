@@ -1,3 +1,5 @@
+import {HubConnectionBuilder} from "@aspnet/signalr";
+
 const initialState = {
 
     username: '',
@@ -29,7 +31,9 @@ const initialState = {
     currentChannelId: '2790a38f-87b2-41ab-b893-d945188b32fa',
     currentChannelName: '',
     usernameRequest: '',
-    passwordRequest: ''
+    passwordRequest: '',
+    // connection: new HubConnectionBuilder().withUrl("/hub/chat").build(),
+
 
 };
 
