@@ -14,7 +14,7 @@ const initialState = {
     height: window.innerHeight,
     width: window.innerWidth,
     loggedInUser: {
-        userId: '19f04deb-b3ed-4e69-bef8-895f6c671c05',
+        userId: '',
         name: '',
         username: ''
     },
@@ -28,7 +28,7 @@ const initialState = {
     femaleAvatars: ['https://react.semantic-ui.com/images/avatar/small/helen.jpg',
                     'https://react.semantic-ui.com/images/avatar/small/jenny.jpg',
                     'https://react.semantic-ui.com/images/avatar/small/laura.jpg'],
-    currentChannelId: '2790a38f-87b2-41ab-b893-d945188b32fa',
+    currentChannelId: '8924afba-4fac-4fdc-9b0b-91f2d19b2a9d',
     currentChannelName: '',
     usernameRequest: '',
     passwordRequest: '',

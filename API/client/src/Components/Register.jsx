@@ -69,7 +69,7 @@ const RegisterForm = (props) => {
             />
             <input
                onChange={props.onEmailChange}
-               style={{borderRadius: '0', margin: '0.3rem 0 0.5rem 0'}}
+               style={{borderRadius: '0', margin: '0.2rem 0 0.5rem 0'}}
                type='email' 
                placeholder='Email' 
                name="email" 
