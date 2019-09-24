@@ -24,20 +24,23 @@ const loginForm = (props) => {
    const isLoggedIn = props.userAuthenticated? <Redirect to="/chat" />: null;
 
    return (
-      <Segment style={{margin: "20rem auto", background: "rgba(0,0,0,0)", width: "25%", borderColor: 'rgb(211,114,228)'}}>
+      <Segment style={{margin: "20rem auto", background: "rgba(0,0,0,0)", width: "25%", borderColor: 'rgb(211,114,228)', borderRadius: '0'}}>
           {isLoggedIn}
          <Form onSubmit={handleOnSubmit}>
-            <Form.Input 
+            <input
                placeholder='Username'
                onChange={props.onUsernameRequestChange}
+               style={{borderRadius: '0', margin: '0.5rem 0'}}
                name="username" 
                value={props.usernameRequest}/>
-            <Form.Input 
+            <input
                placeholder='Password'
                onChange={props.onPasswordRequestChange}
-               name="password" 
+               style={{borderRadius: '0', margin: '0.5rem 0'}}
+               name="password"
+               type="password"
                value={props.passwordRequest} />
-            <Button name="login" type='submit' content='Login' style={{width: "100%", background: "rgb(211,114,228)"}}/>
+            <Button name="login" type='submit' content='Login' style={{width: "100%", background: "rgb(211,114,228)", borderRadius: '0', margin: '0.5rem 0'}}/>
          </Form>
       </Segment>
    );
