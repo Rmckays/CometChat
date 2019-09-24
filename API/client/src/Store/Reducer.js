@@ -1,9 +1,10 @@
 import initialState from "./AppState";
+import * as dispatchState from './dispatchStore';
 
 const reducer = (state = initialState, action) => {
 
     switch(action.type){
-        case 'NAMECHANGE':
+        case dispatchState.nameChange:
             return {
                 ...state,
                 name: action.val,

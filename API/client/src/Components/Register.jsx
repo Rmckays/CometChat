@@ -4,6 +4,7 @@ import {v4 as uuid} from "uuid";
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
+import {nameChange} from "../Store/dispatchStore";
 
 const options = [
    { key: 'm', text: 'Male', value: 'male' },
@@ -100,7 +101,7 @@ const mapDispatchToProps = dispatch => {
    return {
       onNameChange: (event) => {
          let newName = event.target.value;
-         dispatch({type: 'NAMECHANGE', val: newName});},
+         dispatch({type: nameChange, val: newName});},
       onEmailChange: event => {
          let email = event.target.value;
          dispatch({type:'EMAILCHANGE', val: email});
