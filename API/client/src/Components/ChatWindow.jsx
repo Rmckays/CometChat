@@ -14,13 +14,16 @@ const ChatWindow = (props) => {
         .then(response => console.log("Start", response))
         .catch(err => console.log(err));
 
-    const createMessages = props.messages.map(message => {
+    const sortedMessages = props.messages.sort((a,b) => a.createdAt > b.createdAt ? 1 : -1);
+
+    const createMessages = sortedMessages.map(message => {
+        console.log("Creating Messages");
         return <Feed.Event
             key={message.id}
             style={{padding: '1rem'}}
             id={message.id}>
                 <Feed.Label>
-                    <img src={message.user.avatar} />
+                    <img alt="User Avatar" src={message.user.avatar} />
                 </Feed.Label>
                 <Feed.Content>
                     <Feed.Summary>
@@ -53,6 +56,7 @@ const ChatWindow = (props) => {
     };
 
     useEffect(() => {
+        console.log("Getting Messages By Channel");
         axios.get(`/api/messages/channels/${props.currentChannelId}`)
             .then(response => {
                 props.loadMessagesByChannel(response);
@@ -62,6 +66,7 @@ const ChatWindow = (props) => {
 
 
     useEffect(() => {
+        console.log("Getting Messages");
         connection.on("ReceiveMessage", message => {
             props.receiveMessage(message);
         });

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import HomePage from './Containers/Homepage';
 import RegisterPage from './Containers/RegisterPage';
 import ChatPage from './Containers/ChatPage';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import './App.css';
 
 
