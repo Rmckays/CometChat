@@ -7,6 +7,7 @@ const ChannelWindow = (props) => {
 
    const createChannels = props.channels.map(channel => {
        return <Menu.Item
+            key={channel.id}
             name={channel.name}
             onClick={props.onChannelChange}
             active={props.currentChannelId === `${channel.id}`}

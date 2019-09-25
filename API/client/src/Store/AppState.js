@@ -32,7 +32,6 @@ const initialState = {
     currentChannelName: '',
     usernameRequest: '',
     passwordRequest: '',
-    // connection: new HubConnectionBuilder().withUrl("/hub/chat").build(),
 
 
 };

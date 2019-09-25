@@ -9,22 +9,22 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 name: action.val,
             };
-        case 'EMAILCHANGE':
+        case dispatchState.emailChange:
             return {
                 ...state,
                 email: action.val,
             };
-        case 'USERNAMECHANGE':
+        case dispatchState.usernameChange:
             return {
                 ...state,
                 username: action.val,
             };
-        case 'PASSWORDCHANGE':
+        case dispatchState.passwordChange:
             return {
                 ...state,
                 password: action.val,
             };
-        case 'GENDERCHANGE':
+        case dispatchState.genderChange:
             const random = Math.floor(Math.random() * 3);
             let newAvatar;
             if(action.val === 'Male'){
@@ -36,12 +36,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state, avatar: newAvatar
             };
-        case 'USERCREATED':
+        case dispatchState.userCreated:
             return {
                 ...state,
                 createdUser: action.val
             };
-        case 'RELOADPAGE':
+        case dispatchState.reloadPage:
             return {
                 ...state,
                 username: action.payload.username,
@@ -52,27 +52,27 @@ const reducer = (state = initialState, action) => {
                 userId: action.payload.userId,
                 createdUser: action.payload.createdUser
             };
-        case 'LOADCHANNELS':
+        case dispatchState.loadChannels:
             const newChannels = action.val.filter(channels => channels);
 
             return {
                 ...state, channels: newChannels
             };
-        case 'CHANNELCHANGE':
+        case dispatchState.channelChange:
             return {
                 ...state,
                 currentChannelId: action.payload.id,
                 currentChannelName: action.payload.name,
                 messages: []
             };
-        case "LOADMESSAGESBYCHANNEL":
+        case dispatchState.loadMessagesByChannel:
             const allMessages = action.val.filter(messages => messages);
 
             return {
                 ...state,
                 messages: allMessages
             };
-        case "RECEIVEMESSAGE":
+        case dispatchState.receiveMessage:
             if(action.message.channel.id === state.currentChannelId){
                 console.log("It matches");
                 const newMessages = state.messages.concat(action.message);
@@ -82,17 +82,17 @@ const reducer = (state = initialState, action) => {
                 };
             }
             break;
-        case "USERNAMEREQUESTCHANGE":
+        case dispatchState.userRequestChange:
             return {
                 ...state,
                 usernameRequest: action.val,
             };
-        case "PASSWORDREQUESTCHANGE":
+        case dispatchState.passwordRequestChange:
             return {
                 ...state,
                 passwordRequest: action.val
-            }
-        case "LOGINUSER":
+            };
+        case dispatchState.loginUser:
             const loggedUser = Object.assign(state.loggedInUser);
             loggedUser.userId = action.payload.userId;
             loggedUser.username = action.payload.username;

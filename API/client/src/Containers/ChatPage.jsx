@@ -31,7 +31,7 @@ class ChatPage extends Component {
                   <Grid.Column width={4}>
                      <ChannelWindow />
                   </Grid.Column>
-                  <Grid.Column stretch width={12}>
+                  <Grid.Column  width={12}>
                      <ChatWindow />
                   </Grid.Column>
                </Grid>

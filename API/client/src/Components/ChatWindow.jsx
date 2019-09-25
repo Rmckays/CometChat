@@ -5,11 +5,7 @@ import {v4 as uuid} from "uuid";
 import Moment from 'react-moment';
 import axios from 'axios';
 import {HubConnectionBuilder} from "@aspnet/signalr";
-
-// const connection = new HubConnectionBuilder().withUrl("/hub/chat").build();
-// connection.start()
-//     .then(response => console.log("Start", response))
-//     .catch(err => console.log(err));
+import {receiveMessage, loadMessagesByChannel} from "../Store/dispatchStore";
 
 const ChatWindow = (props) => {
 
@@ -20,6 +16,7 @@ const ChatWindow = (props) => {
 
     const createMessages = props.messages.map(message => {
         return <Feed.Event
+            key={message.id}
             style={{padding: '1rem'}}
             id={message.id}>
                 <Feed.Label>
@@ -115,10 +112,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         loadMessagesByChannel: response => {
-            dispatch({type: "LOADMESSAGESBYCHANNEL", val: response.data});
+            console.log("Loaded Message");
+            dispatch({type: loadMessagesByChannel, val: response.data});
         },
         receiveMessage: message => {
-            dispatch({type:"RECEIVEMESSAGE", message: message});
+            console.log("Received Message");
+            dispatch({type:receiveMessage, message: message});
         }
     }
 };
