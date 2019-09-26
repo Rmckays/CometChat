@@ -72,6 +72,7 @@ const reducer = (state = initialState, action) => {
                 messages: allMessages
             };
         case dispatchState.receiveMessage:
+            console.log(action);
             if(action.message.channel.id === state.currentChannelId){
                 console.log("It matches");
                 const newMessages = state.messages.concat(action.message);

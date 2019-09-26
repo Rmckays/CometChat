@@ -5,7 +5,7 @@ import { v4 as uuid } from 'uuid';
 import Moment from 'react-moment';
 import axios from 'axios';
 import {HubConnectionBuilder, LogLevel} from '@aspnet/signalr';
-import { receiveMessage, loadMessagesByChannel, sendMessageToServer  } from '../Store/actions/activityTypes';
+import {loadMessagesByChannel, receiveMessage} from "../Store/actions/actionStore";
 
 const ChatWindow = props => {
    const connection = new HubConnectionBuilder()
@@ -74,7 +74,7 @@ const ChatWindow = props => {
 
    useEffect(() => {
       console.log('Getting Messages');
-      connection.on('ReceiveMessage', message => {
+      connection.on("ReceiveMessage" , message => {
           props.receiveMessage();
       });
 
@@ -144,12 +144,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
    return {
       loadMessagesByChannel: response => {
-         console.log('Loaded Message');
-         dispatch({ type: loadMessagesByChannel, val: response.data });
+         dispatch(loadMessagesByChannel(response));
       },
       receiveMessage: message => {
-          console.log('Received Message');
-         dispatch({ type: receiveMessage, message: message });
+         dispatch(receiveMessage(message));
       },
        // sendMessageToServer: message => {
        //    console.log(message);

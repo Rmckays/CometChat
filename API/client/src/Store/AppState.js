@@ -31,6 +31,7 @@ const initialState = {
     currentChannelName: '',
     usernameRequest: '',
     passwordRequest: '',
+    hubConnection: null
 
 
 };
