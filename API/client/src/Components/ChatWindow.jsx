@@ -4,11 +4,14 @@ import { Feed } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
 import Moment from 'react-moment';
 import axios from 'axios';
-import { HubConnectionBuilder } from '@aspnet/signalr';
+import {HubConnectionBuilder, LogLevel} from '@aspnet/signalr';
 import { receiveMessage, loadMessagesByChannel } from '../Store/dispatchStore';
 
 const ChatWindow = props => {
-   const connection = new HubConnectionBuilder().withUrl('/hub/chat').build();
+   const connection = new HubConnectionBuilder()
+       .withUrl('/hub/chat')
+       .configureLogging(LogLevel.Information)
+       .build();
    connection
       .start()
       .then(response => console.log('Connected', response))
