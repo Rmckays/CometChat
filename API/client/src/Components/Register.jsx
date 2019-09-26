@@ -4,7 +4,7 @@ import {v4 as uuid} from "uuid";
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
-import {nameChange} from "../Store/dispatchStore";
+import {nameChange} from "../Store/actions/activityTypes";
 
 const options = [
    { key: 'm', text: 'Male', value: 'male' },

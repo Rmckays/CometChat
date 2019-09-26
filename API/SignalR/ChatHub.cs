@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Application.Messages;
 using MediatR;
 using Microsoft.AspNetCore.SignalR;
@@ -20,6 +21,7 @@ namespace API.SignalR
         public async Task SendMessage(CreateMessage.Command command)
         {
             var message = await _mediator.Send(command);
+            Console.WriteLine("*************************Sending message:****************************");
             await Clients.All.SendAsync("ReceiveMessage", message);
         }
     }

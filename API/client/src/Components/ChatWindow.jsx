@@ -4,11 +4,14 @@ import { Feed } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
 import Moment from 'react-moment';
 import axios from 'axios';
-import { HubConnectionBuilder } from '@aspnet/signalr';
-import { receiveMessage, loadMessagesByChannel } from '../Store/dispatchStore';
+import {HubConnectionBuilder, LogLevel} from '@aspnet/signalr';
+import { receiveMessage, loadMessagesByChannel, sendMessageToServer  } from '../Store/actions/activityTypes';
 
 const ChatWindow = props => {
-   const connection = new HubConnectionBuilder().withUrl('/hub/chat').build();
+   const connection = new HubConnectionBuilder()
+       .withUrl('/hub/chat')
+       .configureLogging(LogLevel.Information)
+       .build();
    connection
       .start()
       .then(response => console.log('Connected', response))
@@ -72,8 +75,9 @@ const ChatWindow = props => {
    useEffect(() => {
       console.log('Getting Messages');
       connection.on('ReceiveMessage', message => {
-         props.receiveMessage(message);
+          props.receiveMessage();
       });
+
    }, []);
 
    return (
@@ -144,9 +148,13 @@ const mapDispatchToProps = dispatch => {
          dispatch({ type: loadMessagesByChannel, val: response.data });
       },
       receiveMessage: message => {
-         console.log('Received Message');
+          console.log('Received Message');
          dispatch({ type: receiveMessage, message: message });
       },
+       // sendMessageToServer: message => {
+       //    console.log(message);
+       //    dispatch({type: sendMessageToServer})
+       // }
    };
 };
 

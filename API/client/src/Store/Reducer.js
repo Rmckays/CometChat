@@ -1,5 +1,5 @@
 import initialState from "./AppState";
-import * as dispatchState from './dispatchStore';
+import * as dispatchState from './actions/activityTypes';
 
 const reducer = (state = initialState, action) => {
 
@@ -75,7 +75,6 @@ const reducer = (state = initialState, action) => {
             if(action.message.channel.id === state.currentChannelId){
                 console.log("It matches");
                 const newMessages = state.messages.concat(action.message);
-                console.log(newMessages);
                 return {
                     ...state,
                     messages: newMessages
@@ -101,7 +100,13 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 loggedInUser: loggedUser,
                 userAuthenticated: true
-            }
+            };
+        // case sendMessageToServer:
+        //     const sentMessages = state.messages.concat(action.message);
+        //     return{
+        //         ...state,
+        //         message: sentMessages
+        //     }
     }
 
     return state;
