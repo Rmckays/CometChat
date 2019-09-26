@@ -32,7 +32,10 @@ namespace API
             Configuration.RootPath = "client/build";
          });
          services.AddMediatR(typeof(List.Handler).Assembly);
-         services.AddSignalR();
+         services.AddSignalR(hubOptions =>
+         {
+            hubOptions.EnableDetailedErrors = true;
+         });
          services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
       }
 
