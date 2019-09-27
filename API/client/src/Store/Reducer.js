@@ -1,5 +1,5 @@
 import initialState from "./AppState";
-import * as dispatchState from './dispatchStore';
+import * as dispatchState from './actionTypes';
 
 const reducer = (state = initialState, action) => {
 

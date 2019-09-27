@@ -5,7 +5,7 @@ import { v4 as uuid } from 'uuid';
 import Moment from 'react-moment';
 import axios from 'axios';
 import {HubConnectionBuilder, LogLevel} from '@aspnet/signalr';
-import { receiveMessage, loadMessagesByChannel } from '../Store/dispatchStore';
+import { receiveMessage, loadMessagesByChannel } from '../Store/actionTypes';
 
 const ChatWindow = props => {
    const connection = new HubConnectionBuilder()
