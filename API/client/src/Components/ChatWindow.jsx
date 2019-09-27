@@ -79,6 +79,12 @@ const ChatWindow = props => {
       });
    }, []);
 
+   useEffect(() => {
+       return () => {
+           connection.stop();
+       }
+   })
+
    return (
       <Fragment>
          <Feed
