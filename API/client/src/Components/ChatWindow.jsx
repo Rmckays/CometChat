@@ -43,6 +43,32 @@ const ChatWindow = props => {
       );
    });
 
+   const userSendMessage = props.userAuthenticated?
+       <Fragment>
+           <input
+           type='text'
+           placeholder='Enter your message'
+           style={{
+               paddingLeft: '1rem',
+               borderRadius: 'none',
+               width: '90%',
+               border: 'none',
+               height: '100%',
+           }}
+           />
+           <button
+               type='submit'
+               className='ui'
+               style={{
+                   border: 'none',
+                   width: '10%',
+                   height: '100%',
+                   background: 'rgb(211,114,228)',
+               }}>
+               Send
+           </button>
+        </Fragment> : null;
+
    const handleOnSubmit = event => {
       event.preventDefault();
       console.log('Submitted');
@@ -110,28 +136,7 @@ const ChatWindow = props => {
                fontSize: '1.4rem',
                borderRadius: '0 !important',
             }}>
-            <input
-               type='text'
-               placeholder='Enter your message'
-               style={{
-                  paddingLeft: '1rem',
-                  borderRadius: 'none',
-                  width: '90%',
-                  border: 'none',
-                  height: '100%',
-               }}
-            />
-            <button
-               type='submit'
-               className='ui'
-               style={{
-                  border: 'none',
-                  width: '10%',
-                  height: '100%',
-                  background: 'rgb(211,114,228)',
-               }}>
-               Send
-            </button>
+             {userSendMessage}
          </form>
       </Fragment>
    );
@@ -142,6 +147,7 @@ const mapStateToProps = state => {
       messages: state.messages,
       loggedInUser: state.loggedInUser,
       currentChannelId: state.currentChannelId,
+      userAuthenticated:  state.userAuthenticated
    };
 };
 
