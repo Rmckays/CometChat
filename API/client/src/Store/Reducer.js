@@ -1,5 +1,6 @@
 import initialState from "./AppState";
 import * as dispatchState from './actionTypes';
+import {failedLogin} from "./actionTypes";
 
 const reducer = (state = initialState, action) => {
 
@@ -101,6 +102,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 loggedInUser: loggedUser,
                 userAuthenticated: true
+            }
+        case dispatchState.failedLogin:
+            return{
+                ...state,
+                failedUserLogin: true
             }
     }
 

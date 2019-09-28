@@ -1,10 +1,10 @@
 import * as actionTypes from './actionTypes';
-import {HubConnectionBuilder, LogLevel} from "@aspnet/signalr";
-
-const hubConnection = new HubConnectionBuilder()
-    .withUrl('/hub/chat')
-    .configureLogging(LogLevel.Information)
-    .build();
+// import {HubConnectionBuilder, LogLevel} from "@aspnet/signalr";
+//
+// const hubConnection = new HubConnectionBuilder()
+//     .withUrl('/hub/chat')
+//     .configureLogging(LogLevel.Information)
+//     .build();
 
 export const loadMessagesByChannel = response => {
     console.log('Loaded Messages');

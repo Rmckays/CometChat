@@ -25,3 +25,5 @@ export const userRequestChange = "USERNAMEREQUESTCHANGE";
 export const passwordRequestChange = "PASSWORDREQUESTCHANGE";
 
 export const loginUser = "LOGINUSER";
+
+export const failedLogin = "FAILEDLOGIN";
