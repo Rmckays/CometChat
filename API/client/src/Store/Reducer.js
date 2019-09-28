@@ -106,7 +106,9 @@ const reducer = (state = initialState, action) => {
         case dispatchState.failedLogin:
             return{
                 ...state,
-                failedUserLogin: true
+                failedUserLogin: true,
+                usernameRequest: '',
+                passwordRequest: ''
             }
     }
 

@@ -7,7 +7,6 @@ import { Segment, Form, Button, Message } from 'semantic-ui-react';
 const LoginForm = (props) => {
     const handleOnSubmit = event => {
         event.preventDefault();
-        const form = event.target;
 
         axios.get(`/api/users/${props.usernameRequest}`,)
             .then(response => {
@@ -29,13 +28,9 @@ const LoginForm = (props) => {
    const failedLogin = !props.failedUserLogin?
        null : <Message
                style={{color: "red", background: 'rgb(255, 171, 171)', borderRadius: '0'}}
-               header='Wrong Password'
-               content='Please verify your password and sign in again.'
+               header='Username or Password'
+               content='Please verify your login credentials and try again.'
               />;
-
-   // useEffect(() => {
-   //
-   // },[props.failedUserLogin]);
 
    return (
       <Segment style={{margin: "20rem auto", background: "rgba(0,0,0,0)", width: "25%", borderColor: 'rgb(211,114,228)', borderRadius: '0'}}>
