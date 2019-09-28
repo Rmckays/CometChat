@@ -28,7 +28,7 @@ const LoginForm = (props) => {
    const failedLogin = !props.failedUserLogin?
        null : <Message
                style={{color: "red", background: 'rgb(255, 171, 171)', borderRadius: '0'}}
-               header='Username or Password'
+               header='Wrong Username or Password'
                content='Please verify your login credentials and try again.'
               />;
 
