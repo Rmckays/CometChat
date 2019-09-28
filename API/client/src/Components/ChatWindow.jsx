@@ -77,13 +77,12 @@ const ChatWindow = props => {
       connection.on('ReceiveMessage', message => {
          props.receiveMessage(message);
       });
-   }, []);
-
-   useEffect(() => {
        return () => {
+           console.log("Cleaning Up Old Connection");
            connection.stop();
        }
-   })
+   }, []);
+
 
    return (
       <Fragment>
