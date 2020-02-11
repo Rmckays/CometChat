@@ -6,7 +6,7 @@ Comet Chat is a real time chat application inspired by the sunsets in my home st
 The real time interaction is handled via SignalR and all data is stored in a SQL Server. 
 The front-end was built using React, Redux, and Typescript. The back-end is ASP.Net Core. 
 
-![CometChat Screenshot](https://github.com/Rmckays/ScoreReceiver/blob/master/Images/ScoreRec.JPG)
+![CometChat Screenshot](https://github.com/Rmckays/CometChat/blob/master/Images/cometchatmessages.JPG)
 
 
 ### Instructions
