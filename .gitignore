@@ -1,6 +1,7 @@
 /node_modules
 bin
 obj
+.vscode/
 .idea
 .idea/.gitignore
 .idea/CometChat.iml
